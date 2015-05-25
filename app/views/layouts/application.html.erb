@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Workspace</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div class="units-row">
+		<div class="unit-centered unit-65">
+
+			<div class="navigation-toggle" data-tools="navigation-toggle" data-target="#navbar-1">
+				<span>Menu</span>
+			</div>
+
+
+			<header id="navbar-1" class="group">
+
+				<nav class="navbar navbar-pills navbar-left">
+					<ul>
+
+						<li <% if @current_pagina == 1 %> class="active" <% end %>><strong><%= link_to "TeLoMando", root_path %></strong></a></li>
+
+
+						<li <% if @current_pagina == 2 %> class="active" <% end %>><a href="#">Ayuda</a></li>
+						<li><a href="#" data-tools="dropdown" data-target="#dropdown-objetos"><i class="fa fa-bell"></i> Objetos</a></li>
+
+					</ul>
+				</nav>
+
+				<ul id="dropdown-objetos" class="dropdown">
+					<li><a href=""  data-theme="blue" data-tools="tooltip" title="Los que has subido">Objetos que encontre</a></li>
+					<li><a href=""  data-theme="blue" data-tools="tooltip" title="Que alguien mas subio y crees que es tuyo">Objetos que son míos</a></li>
+				</ul>
+
+				<nav  class="navbar navbar-pills navbar-right">
+					<ul>
+
+						<% if @permiso_admin %>
+						<li><a href="#" data-tools="dropdown" data-target="#dropdown-admin"><i class="fa fa-cog"></i> Administrar</a></li>
+						
+						<% end %>	
+
+
+						<% if @sesion %>
+
+						<li><a href="#" data-tools="dropdown" data-target="#dropdown-user"><i class="fa fa-cog"></i> Cuenta</a></li>
+
+						<li><%= link_to 'Salir', :controller => 'login', :action => 'cerrar_sesion' %></li>
+
+
+						<% elsif @sesion == false %>	
+
+						<li><%= link_to 'Ingresar', login_iniciar_sesion_path, :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Si ya tiene una cuenta' %></li>
+
+						<li><%= link_to "Registrarse", new_user_path, :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Si aun no tiene una cuenta' %></li>
+
+						<% end %>	
+
+
+					</ul>
+				</nav>
+
+				<% if @sesion %>
+
+				<ul id="dropdown-admin" class="dropdown">
+					<li><%= link_to "Cuentas usuarios", users_path, :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Administre los usuarios' %></li>
+
+					<li><a href=""  data-theme="blue" data-tools="tooltip" title="Edite objetos">Objetos</a></li>
+				</ul>
+
+				<ul id="dropdown-user" class="dropdown">
+					<li><%= link_to "Mis datos", edit_user_path(@current_user_id), :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Administre sus datos' %></li>
+				</ul>
+
+				<%end%>
+
+			</header>
+
+			<hr>
+
+			<ul class="blocks-2">
+				<li></li>
+				<li>
+					<div class="unit-push-right unit-70">
+						<input type="search" class="width-70" placeholder="Buscar un objeto">
+					</div>
+				</li>
+			</ul>
+
+
+<%= yield %>
+
+
+		</div>
+	</div>
+
+</body>
+</html>

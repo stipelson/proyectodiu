@@ -1,0 +1,55 @@
+<%= form_for(@user) do |e| %> 
+
+<% @user.errors.full_messages.each do |message| %>
+<div class="tools-alert tools-alert-red">
+  <strong><%= pluralize(@user.errors.count, " Error, ") %></strong> El <%= message %>
+</div>
+<% end %>
+
+
+<p> 
+ <%= e.label :nombre, "Nombre" %>
+ <span class="req">*</span>
+ <br />
+ <%= e.text_field(:nombre, class: 'form-control', :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Tu nombre') %>
+</p>
+<p> 
+  <%= e.label :apellido, "Apellido" %>
+  <br />
+  <%= e.text_field(:apellido, class: 'form-control') %>
+</p>
+<p> 
+  <%= e.label :usuario, "Usuario" %>
+  <span class="req">*</span>
+  <br />
+  <%= e.text_field(:usuario, class: 'form-control', :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'El que usaras para iniciar sesion') %>
+</p>
+<p> 
+ <%= e.label :password, "Contraseña" %>
+ <span class="req">*</span>
+ <br />
+ <%= e.text_field(:password, class: 'form-control', :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'La usaras para iniciar sesion') %>
+</p>
+<p> 
+ <%= e.label :correo, "Correo" %>
+ <span class="req">*</span>
+ <br />
+ <%= e.text_field(:correo, class: 'form-control', :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Correo electronico') %>
+</p>
+
+<% if defined?(@permiso_admin) and @permiso_admin %>
+
+<p> 
+ <%= e.label :admin, "Administrador" %>
+ <br />
+ <br />
+ <%= e.check_box (:admin) %>
+</p>
+
+<% end %>
+
+
+<p>
+ <%= e.submit "Enviar", class: "btn btn-blue" %> <%= link_to "Cancelar", users_path, class: "btn btn-default" %>
+</p>
+<% end %> 
