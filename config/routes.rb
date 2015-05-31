@@ -1,4 +1,22 @@
 Rails.application.routes.draw do
+  resources :categories
+
+  get 'articles/index'
+
+  get 'articles/new'
+
+  get 'articles/show'
+
+  get 'articles/edit'
+
+  get 'article/index'
+
+  get 'article/new'
+
+  get 'article/show'
+
+  get 'article/edit'
+
   get 'users/index'
 
   get 'users/show'
@@ -7,12 +25,14 @@ Rails.application.routes.draw do
 
   get 'users/edit'
 
+  resources :articles
+
   get 'inicio/bienvenido'
     root 'inicio#bienvenido'
       resources :users
 
   post 'login/iniciar_sesion'
-  
+
   get 'login/cerrar_sesion'
 
   get 'login/iniciar_sesion'

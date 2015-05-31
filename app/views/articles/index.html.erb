@@ -1,0 +1,28 @@
+<div class="page-header">
+  <h1>Articlos<small>Lista de articulos</small></h1>
+</div>
+
+<table class='table table-hover' >
+  <thead>
+    <tr>
+      <th>Nombre del articulo</th>
+      <th>usuario</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @articles.each do |article| %>
+      <tr>
+        <td><%= article.nombre.capitalize %></td>
+        <td><%= article.category.nombre %></td>
+
+        <td><%= link_to 'Ver', article_path(article) %></td>
+        <td><%= link_to 'Editar', edit_article_path(article) %></td>
+        <td> <%= link_to 'Eliminar', article_path(article), method: :delete, data: { confirm: '¿Esta seguro de querer eliminar el usuario ' +article.nombre.capitalize+ '?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p> <%= link_to "Crear un nuevo usuario", new_article_path, class: "btn btn-primary" %> </p>
