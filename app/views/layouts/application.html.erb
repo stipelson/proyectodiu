@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Workspace</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+	<title>Workspace</title>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
+
+	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	<%= csrf_meta_tags %>
+
 </head>
 <body>
-<div class="units-row">
+	<div class="units-row">
 		<div class="unit-centered unit-65">
 
 			<div class="navigation-toggle" data-tools="navigation-toggle" data-target="#navbar-1">
@@ -39,8 +42,8 @@
 
 						<% if @permiso_admin %>
 						<li><a href="#" data-tools="dropdown" data-target="#dropdown-admin"><i class="fa fa-cog"></i> Administrar</a></li>
-						
-						<% end %>	
+
+						<% end %>
 
 
 						<% if @sesion %>
@@ -50,13 +53,13 @@
 						<li><%= link_to 'Salir', :controller => 'login', :action => 'cerrar_sesion' %></li>
 
 
-						<% elsif @sesion == false %>	
+						<% elsif @sesion == false %>
 
 						<li><%= link_to 'Ingresar', login_iniciar_sesion_path, :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Si ya tiene una cuenta' %></li>
 
 						<li><%= link_to "Registrarse", new_user_path, :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Si aun no tiene una cuenta' %></li>
 
-						<% end %>	
+						<% end %>
 
 
 					</ul>
@@ -65,9 +68,9 @@
 				<% if @sesion %>
 
 				<ul id="dropdown-admin" class="dropdown">
-					<li><%= link_to "Cuentas usuarios", users_path, :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Administre los usuarios' %></li>
+					<li><%= link_to "Cuentas de usuarios", users_path, :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Administre los usuarios' %></li>
 
-					<li><a href=""  data-theme="blue" data-tools="tooltip" title="Edite objetos">Objetos</a></li>
+					<li><%= link_to "Administrar Objetos", articles_path, :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Administre los objetos en la aplicación' %></li>
 				</ul>
 
 				<ul id="dropdown-user" class="dropdown">
@@ -80,21 +83,31 @@
 
 			<hr>
 
-			<ul class="blocks-2">
-				<li></li>
-				<li>
-					<div class="unit-push-right unit-70">
-						<input type="search" class="width-70" placeholder="Buscar un objeto">
-					</div>
-				</li>
-			</ul>
+			<div class="container">
+				<% flash.each do |key, value| %>
+
+				<div class="tools-alert tools-alert-<%= value[0, value.index('&')] %> ">
+
+					<%= value[value.index('&')+1, value.length] %>
+				</div>
+
+				      <% end %>
+
+				<ul class="blocks-2">
+					<li></li>
+					<li>
+						<div class="unit-push-right unit-70">
+							<input type="search" class="width-70" placeholder="Buscar un objeto">
+						</div>
+					</li>
+				</ul>
 
 
-<%= yield %>
+				<%= yield %>
 
 
+			</div>
 		</div>
-	</div>
 
-</body>
-</html>
+	</body>
+	</html>

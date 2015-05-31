@@ -5,10 +5,10 @@ class UsersController < ApplicationController
     	@users = User.all()
         if params[:tipo];
           @tipo = params[:tipo];
-        end 
+        end
     else
       redirect_to :controller => "inicio", :action => "bienvenido";
-    end    
+    end
   end
 
   def show
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 
   def new
     if regular();
-           redirect_to :controller => "inicio", :action => "bienvenido";  	 
+           redirect_to :controller => "inicio", :action => "bienvenido";
     else
       @user = User.new();
     end
@@ -37,14 +37,14 @@ class UsersController < ApplicationController
       @correo = @user.correo;
       @admin = @user.admin;
   end
-  
+
   def create
    logueado();
 
-   @user = User.new(user_params) 
+   @user = User.new(user_params)
    if @user.save()
       @nombre_u = params[:user][:nombre];
-      redirect_to users_path, :notice => "success&El usuario #{@nombre_u} ha sido creado";
+      redirect_to users_path, :notice => "green&El usuario #{@nombre_u} ha sido creado";
    else
       render "new";
    end
@@ -56,7 +56,7 @@ class UsersController < ApplicationController
 
     if @user.update(user_params)
       @nombre_u = params[:user][:nombre];
-      redirect_to users_path, :notice => "success&El usuario ha sido actualizado"
+      redirect_to users_path, :notice => "green&El usuario #{@nombre_u} ha sido actualizado"
    else
       render "edit";
    end
@@ -66,12 +66,12 @@ class UsersController < ApplicationController
     if permiso_admin();
       @user = User.find(params[:id]);
       if @user.destroy()
-        redirect_to users_path, :notice => "warning&El empleado ha sido eliminado";
+        redirect_to users_path, :notice => "red&El usuario ha sido eliminado";
       else
-        redirect_to users_path, :notice => "danger&El empleado NO ha podido ser eliminado";
+        redirect_to users_path, :notice => "red&El usuario NO ha podido ser eliminado";
       end
     else
-     redirect_to :controller => "inicio", :action => "bienvenido";     
+     redirect_to :controller => "inicio", :action => "bienvenido";
     end
 
 
@@ -90,7 +90,7 @@ class UsersController < ApplicationController
 
 
   def regular
-    if sesion_identi() and (!defined?(@permiso_admin) or !@permiso_admin) 
+    if sesion_identi() and (!defined?(@permiso_admin) or !@permiso_admin)
        return true;
      else
        return false;
@@ -112,5 +112,5 @@ class UsersController < ApplicationController
        return false;
      end
   end
-  
+
 end

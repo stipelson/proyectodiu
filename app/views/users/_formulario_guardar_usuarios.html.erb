@@ -1,4 +1,4 @@
-<%= form_for(@user, :html => { :class=> 'forms' }) do |e| %> 
+<%= form_for(@user, :html => { :class=> 'forms' }) do |e| %>
 
 <% @user.errors.full_messages.each do |message| %>
 <div class="tools-alert tools-alert-red">
@@ -19,6 +19,7 @@ Nombre<span class='req'>*</span>
 <%= e.label :usuario do %>
 Usuario<span class='req'>*</span>
 <%= e.text_field(:usuario, class: 'width-100', :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'El que usaras para iniciar sesion') %>
+<div class="forms-desc">El nombre de usuario sera publico.</div>
 <% end %>
 
 <%= e.label :password do %>
@@ -43,7 +44,7 @@ Correo<span class="req">*</span>
 <% end %>
 
 <p>
-	<%= e.submit "Enviar", class: "btn btn-blue" %> <%= link_to "Cancelar", users_path, class: "btn btn-default" %>
+	<%= e.submit "Enviar", class: "btn btn-green" %> <%= link_to "Cancelar", users_path, class: "btn btn-red" %>
 </p>
 
-<% end %> 
+<% end %>
