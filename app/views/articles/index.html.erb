@@ -1,30 +1,63 @@
-<div class="page-header">
-  <h1>Objetos<small> Lista de objetos</small></h1>
-</div>
+	<div class="units-row">
+		<div class="unit-70">
 
-<table class='table table-hover' >
-  <thead>
-    <tr>
-      <th>Nombre del articulo</th>
-      <th>Usuario que lo subio</th>
-      <th>Categoria</th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @articles.each do |article| %>
-      <tr>
-        <td><%= article.nombre.capitalize %></td>
-        <td><%= article.user.nombre %></td>
-        <td><%= article.category.nombre %></td>
+			<div class="page-header">
+				<h1>Objetos <small>Lista de objetos</small></h1>
+			</div>
 
-        <td><%= link_to 'Ver', article_path(article) %></td>
-        <td><%= link_to 'Editar', edit_article_path(article) %></td>
-        <td> <%= link_to 'Eliminar', article_path(article), method: :delete, data: { confirm: '¿Esta seguro de querer eliminar el usuario ' +article.nombre.capitalize+ '?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<p> <%= link_to "Crear un nuevo usuario", new_article_path, class: "btn btn-primary" %> </p>
+		</div>
+		<div class="unit-push-right ">
+			<p> <%= link_to "Subir un nuevo objeto", new_article_path, class: "btn btn-blue" %> </p>
+
+		</div>
+	</div>
+
+
+	<% @articles.each do |article| %>
+
+
+
+	<div data-tools="accordion">
+
+		<a href= '<%= "##{article.nombre}"%>' class="accordion-title"><%= article.nombre.capitalize %></a>
+		<div id= '<%= "#{article.nombre}"%>' class="accordion-panel">
+			<div class="units-row">
+				<div class="unit-30">
+					<dl>
+						<dt>Nombre</dt>
+						<dd><%= article.nombre.capitalize%></dd>
+
+						<dt>Lo subio</dt>
+						<dd> <%= article.user.nombre.capitalize %></dd>
+
+						<dt>Categoria</dt>
+						<dd><%= article.category.nombre%></dd>
+					</dl>
+				</div>
+				<div class="unit-30">
+					<%= image_tag article.photo.url(:small) %>
+
+				</div>
+				<div class="unit-30">
+					<dl>
+						<dt>Descripcion</dt>
+						<dd><%= article.descripcion %></dd>
+					</dl>
+				</div>
+			</div>
+
+			<%= link_to 'Ver',  article_path(article), :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Si ya tiene una cuenta', :'class' => 'btn btn-smaller btn-blue'%>
+			<%= link_to 'Editar', edit_article_path(article), :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Si ya tiene una cuenta', :'class' => 'btn btn-smaller btn-green'%>
+			<%= link_to 'Eliminar', article_path(article), method: :delete, data: { confirm: '¿Esta seguro de querer eliminar el objeto ' +article.nombre.capitalize+ '?' }, :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Si ya tiene una cuenta', :'class' => 'btn btn-smaller btn-red'%>
+
+
+		</div>
+
+	</div>
+
+	<% end %>
+
+
+

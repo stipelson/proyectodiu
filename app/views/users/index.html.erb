@@ -1,17 +1,17 @@
 <div class="units-row">
-  <div class="unit-70">
+	<div class="unit-70">
 
 
-   <div class="page-header">
-    <h1>Usuarios <small>Lista de usuarios</small></h1>
-  </div>
+		<div class="page-header">
+			<h1>Usuarios <small>Lista de usuarios</small></h1>
+		</div>
 
 
-</div>
-<div class="unit-push-right ">
-  <p> <%= link_to "Crear un nuevo usuario", new_user_path, class: "btn btn-blue" %> </p>
+	</div>
+	<div class="unit-push-right ">
+		<p> <%= link_to "Crear un nuevo usuario", new_user_path, class: "btn btn-blue" %> </p>
 
-</div>
+	</div>
 </div>
 
 <% @users.each do |user| %>
@@ -20,44 +20,33 @@
 
 <div data-tools="accordion">
 
-  <a href= '<%= "##{user.nombre}"%>' class="accordion-title"><%= user.nombre.capitalize %></a>
-  <div id= '<%= "#{user.nombre}"%>' class="accordion-panel">
+	<a href= '<%= "##{user.nombre}"%>' class="accordion-title"><%= user.nombre.capitalize %></a>
+	<div id= '<%= "#{user.nombre}"%>' class="accordion-panel">
 
-    <dl>
-      <dt>Nombre</dt>
-      <dd><%= user.nombre.capitalize%></dd>
+		<dl>
+			<dt>Nombre</dt>
+			<dd><%= user.nombre.capitalize%></dd>
 
-      <dt>Perfil</dt>
+			<dt>Perfil</dt>
 
-      <% if user.admin %>
-      <dd>Es administrador</dd>
-      <%else %>
-      <dd>Registrado</dd>
-      <%end%>
+			<% if user.admin %>
+			<dd>Es administrador</dd>
+			<%else %>
+			<dd>Registrado</dd>
+			<%end%>
 
-      <dt>Correo electronico</dt>
-      <dd><%= user.correo%></dd>
-    </dl>
+			<dt>Correo electronico</dt>
+			<dd><%= user.correo%></dd>
+		</dl>
 
-    <%= link_to 'Ver',  user_path(user), :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Si ya tiene una cuenta', :'class' => 'btn btn-smaller btn-blue'%>
-    <%= link_to 'Editar', edit_user_path(user), :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Si ya tiene una cuenta', :'class' => 'btn btn-smaller btn-green'%>
-    <%= link_to 'Eliminar', user_path(user), method: :delete, data: { confirm: '¿Esta seguro de querer eliminar el usuario ' +user.nombre.capitalize+ '?' }, :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Si ya tiene una cuenta', :'class' => 'btn btn-smaller btn-red'%>
+		<%= link_to 'Ver',  user_path(user), :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Si ya tiene una cuenta', :'class' => 'btn btn-smaller btn-blue'%>
+		<%= link_to 'Editar', edit_user_path(user), :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Si ya tiene una cuenta', :'class' => 'btn btn-smaller btn-green'%>
+		<%= link_to 'Eliminar', user_path(user), method: :delete, data: { confirm: '¿Esta seguro de querer eliminar el usuario ' +user.nombre.capitalize+ '?' }, :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Si ya tiene una cuenta', :'class' => 'btn btn-smaller btn-red'%>
 
 
-  </div>
+	</div>
 
 </div>
-
-<script type="text/javascript">
-
-ready = ->
-
-// Your javascriptcode goes here
-
-$(kube.min.js).ready(ready)
-$(kube.min.js).on('page:load', ready)
-
-</script>
 
 <% end %>
 

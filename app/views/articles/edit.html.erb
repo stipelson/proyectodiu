@@ -1,2 +1,4 @@
-<h1>Articles#edit</h1>
-<p>Find me in app/views/articles/edit.html.erb</p>
+<div class="page-header">
+  <h2>Modificar articulo <%= @article.nombre.capitalize%><small> modificacion y/o actualizacion de datos</small></h2>
+</div>
+<%= render :partial => "form.html" %>
