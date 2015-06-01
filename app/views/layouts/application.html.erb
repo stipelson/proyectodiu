@@ -13,17 +13,17 @@
 	<div class="units-row">
 		<div class="unit-centered unit-100 ">
 
-			<div class="navigation-toggle navigation-toggle-black " data-tools="navigation-toggle" data-target="#navbar-1">
+			<div class="navigation-toggle navigation-toggle-black" data-tools="navigation-toggle" data-target="#navbar-1">
 				<span>Menu</span>
 			</div>
 
 
-			<header id="navbar-1" class="group navbar-gray-example">
+			<header id="navbar-1" class="group navbar-pills-black-example">
 				<div class="unit-centered unit-65 ">
 					<nav class="navbar navbar-pills navbar-left ">
 						<ul>
 
-							<li <% if @current_pagina == 1 %> class="active" <% end %>><strong><%= link_to "TeLoMando", root_path %></strong></a></li>
+							<li <% if @current_pagina == 1 %> class="" <% end %>><strong><%= link_to "TeLoMando", root_path %></strong></a></li>
 
 
 
@@ -79,7 +79,7 @@
 	</div>
 
 	<div class="units-row">
-		<div class="unit-centered unit-65 ">
+		<div class="unit-centered unit-60 ">
 
 
 			<% if @sesion %>
@@ -121,7 +121,7 @@
 								<label class="input-groups">
 									<input type="text" name="buscar" placeholder="Buscar" />
 									<span class="btn-append">
-										<button class="btn">Buscar</button>
+										<button class="btn btn-blue">Buscar</button>
 									</span>
 								</label>
 							</form>

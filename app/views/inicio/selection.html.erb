@@ -1,0 +1,82 @@
+<div class="units-row">
+	<div class="unit-20" >
+
+		<pre><h3>Objetos</h3></pre>
+
+		<nav class="nav nav-stacked " >
+
+			<ul>
+				<li ><%= link_to "Encontre un objeto", new_article_path, :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Subir un objeto que hayas encontrado', :'class' =>'btn-n'%></li>
+			</ul>
+		</nav>
+		<div data-tools="navigation-fixed">
+			<div data-tools="accordion">
+				<a href="#panel1" class="accordion-title btn-n">Categorias</a>
+				<div id="panel1" class="accordion-panel btn-n">
+					<nav class="nav nav-stats">
+						<% @categories.each do |c| %>
+						<ul>
+
+								<li><%= link_to selection_path(c) do %>
+								<%= c.nombre %>
+								<% end %>
+								<sup><%= @articles.where("category_id = '#{c.id}'").count %></sup></li>
+
+						</ul>
+						<% end %>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<div class="unit-80">
+
+
+		<ul class="blocks-4">
+
+
+
+
+
+			<% @articles.each do |article| %>
+			<% if  article.category_id == @category.id %>
+
+			<li <% if @count == 4 %> class="block-first" <% @count = 0 %><% end %>>
+				<figure  style="background: white; border-top-right-radius: 50px;
+				border-top-left-radius: 50px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px;
+				border-right: 2px solid #e0e3e5;
+				border-bottom: 2px solid #e0e3e5;">
+				<%=  link_to image_tag(article.photo.url()), article_path(article)%>
+
+				<figcaption style="margin-left: 7px;"><%= article.nombre %></figcaption>
+				<p style="margin-left: 7px; margin-bottom: 3px;">
+					<small><%= article.user.usuario %></small> &mdash; <cite><%= article.category.nombre %></cite>
+				</p>
+
+<!-- 				<div class="units-row" style="margin-bottom: 0px;">
+					<div class="unit-push-right">
+						<nav class="nav" style="margin-bottom: 0px;">
+							<ul>
+
+								<li ><a href="#"><i class="fa fa-eye"></i> Button</a></li>
+							</ul>
+						</nav>
+
+					</div>
+				</div> -->
+
+
+			</figure>
+		</li>
+		<% @count +=1 %>
+		<% end %>
+		<% end %>
+	</ul>
+
+
+
+</div>
+</div>

@@ -1,2 +1,38 @@
-<h1>Articles#show</h1>
-<p>Find me in app/views/articles/show.html.erb</p>
+	<div class="units-row">
+
+	<div class="unit-60">
+
+				<figure  style="background: white; border-top-right-radius: 50px;
+				border-top-left-radius: 50px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px;
+				border-right: 2px solid #e0e3e5;
+				border-bottom: 2px solid #e0e3e5;">
+				<%=  link_to image_tag(@article.photo.url()), article_path(@article.id)%>
+
+				<figcaption style="margin-left: 7px;"><%= @article.nombre %></figcaption>
+				<p style="margin-left: 7px; margin-bottom: 3px;">
+					<small><%= @article.user.usuario %></small> &mdash; <cite><%= @article.category.nombre %></cite>
+				</p>
+
+<!-- 				<div class="units-row" style="margin-bottom: 0px;">
+					<div class="unit-push-right">
+						<nav class="nav" style="margin-bottom: 0px;">
+							<ul>
+
+								<li ><a href="#"><i class="fa fa-eye"></i> Button</a></li>
+							</ul>
+						</nav>
+
+					</div>
+				</div> -->
+
+
+			</figure>
+</div>
+
+<div class="unit-60">
+</div>
+
+
+
+
+</div>

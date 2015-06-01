@@ -1,8 +1,12 @@
+
  <div class="units-row">
   <div class="unit-centered unit-40">
-
+<fieldset>
+			<legend>
+				<h2 class="form-signin-heading"> Iniciar sesión </h2>
+			</legend>
     <%= form_tag({:controller => "login", :action => "iniciar_sesion", :method => "post"}, class: "forms") do %>
-    <h2 class="form-signin-heading"> Iniciar sesión </h2>   
+
 
 
     <label>
@@ -10,7 +14,7 @@
    </label>
 
    <label>
-     <%= password_field_tag "password", "", :required => "required", class: "width-100", placeholder: "Contraseña" %>    
+     <%= password_field_tag "password", "", :required => "required", class: "width-100", placeholder: "Contraseña" %>
    </label>
 
    <%= submit_tag "Ingresar", class: "btn btn-blue width-100" %>
@@ -22,11 +26,14 @@
     <strong>¡Error!</strong> Usuario o contraseña son incorrectos.
   </div>
   <% end %>
+</fieldset>
+</div>
+</div>
 
-</div>
-</div>
+
+
 
 <%
-# INSERT INTO "users" ("apellido", "correo", "created_at", "nombre", "password", "updated_at", "usuario", "admin") VALUES 
-# ("root", "root@root", "2015-05-25 02:15:10.317711", "root", "root", "2015-05-25 02:15:10.317711", "root", "1");   
+# INSERT INTO "users" ("apellido", "correo", "created_at", "nombre", "password", "updated_at", "usuario", "admin") VALUES
+# ("root", "root@root", "2015-05-25 02:15:10.317711", "root", "root", "2015-05-25 02:15:10.317711", "root", "1");
 %>

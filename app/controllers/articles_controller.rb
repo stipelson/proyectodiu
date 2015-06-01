@@ -42,6 +42,7 @@ class ArticlesController < ApplicationController
 
 	end
 
+
 	def destroy
 
 		if permiso_admin();
@@ -116,6 +117,7 @@ class ArticlesController < ApplicationController
 	end
 
 	def find_article
+		logueado()
 		@article = Article.find(params[:id])
 	end
 

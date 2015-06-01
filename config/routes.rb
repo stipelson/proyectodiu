@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :categories
 
+  	get '/inicio/categoria/:id', to: 'inicio#selection', as: 'selection'
+
   get 'articles/index'
 
   get 'articles/new'

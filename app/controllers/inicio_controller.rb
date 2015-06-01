@@ -1,29 +1,32 @@
 class InicioController < ApplicationController
-  def bienvenido
-    @loguin = logueado();
-    @count= 0
-    @current_pagina = 1
-    @articles = Article.all()
-    @categories = Category.all.order("created_at ASC")
-  end
+	def bienvenido
+		@loguin = logueado();
+		@count= 0
+		@current_pagina = 1
 
-  def selection
-
-    @category = Category.find(params[:id])
-
-    @articles = Article.where(category_id: @category.id );
-
-  end
+		@articles = Article.all.order("created_at ASC")
+		@categories = Category.all.order("created_at ASC")
 
 
-  private
+	end
 
-  def logueado
-    if sesion_identi() and defined?(@current_user_id)
-     return true;
-   else
-     return false;
-   end
+	def selection
+		@loguin = logueado();
+		@categories = Category.all.order("created_at ASC")
+		@count= 0
+		@category = Category.find(params[:id]);
+		@articles = Article.all.order("created_at ASC")
+	end
 
- end
+
+	private
+
+	def logueado
+		if sesion_identi() and defined?(@current_user_id)
+			return true;
+		else
+			return false;
+		end
+
+	end
 end
