@@ -12,4 +12,37 @@
  *
  *= require_tree .
  *= require_self
+ *= require font-awesome
  */
+
+
+.navbar-gray-example{background:#e0e3e5}
+.navigation-fixed.navbar-gray-example{padding:10px 15px 0px 15px;background:rgba(255,255,255,0.95);box-shadow:0 1px 3px rgba(0,0,0,0.3)}
+.navigation-fixed.navbar-black-example{padding:0}
+.navigation-fixed.navbar-black-example a{padding:12px 15px}
+.navigation-fixed.navbar-black-example .dropdown-in,.navigation-fixed.navbar-black-example .dropdown-in:hover{background:#fff;color:#000}
+.navbar-gray-example{padding:10px 15px 0px 15px}
+.navbar-gray-example a,.navbar-gray-example a:hover{color:#000}
+.navbar-gray-example li.active a,.navbar-gray-example span{color:rgba(0,0,0,0.3)}.navbar-black-example{background:#000}S
+.navbar-red-example{background:blue}
+.navbar-black-example,.navbar-red-example{padding:30px 50px 28px}
+.navbar-black-example a,.navbar-red-example a,.navbar-black-example a:hover,.navbar-red-example a:hover{color:#fff}
+.navbar-black-example li.active a,.navbar-red-example li.active a,.navbar-black-example span,.navbar-red-example span{color:rgba(255,255,255,0.5)}
+.navbar-pills-black-example{background:#000;padding:20px 35px}
+.navbar-pills-black-example a{color:#fff}
+.navbar-pills-black-example a:hover{background:#ffc800;color:#000}
+.navbar-pills-black-example li.active a,.navbar-pills-black-example span{background:#ffc800;color:rgba(0,0,0,0.8)}
+.navbar-pills-red-example{background:#de2c3b;padding:10px 15px 0px 15px}
+.navbar-pills-red-example a{color:#fff}
+.navbar-pills-red-example a:hover{background:#fff;color:#000}
+.navbar-pills-red-example li.active a,.navbar-pills-red-example span{background:#fff;color:rgba(0,0,0,0.8)}
+.navbar-pills-gray-example a{background:#f0f1f2;color:#000}
+.navbar-pills-gray-example a:hover{background:#e0e3e5}
+.navbar-pills-gray-example li.active a,.navbar-pills-gray-example span{background:#f7f8f8;color:rgba(0,0,0,0.4);box-shadow:0 1px 3px #888 inset}
+.navbar-pills-blue-example a,.navbar-pills-blue-example span{border-radius:50px}
+.navbar-pills-blue-example a{color:#000;text-decoration:none}
+.navbar-pills-blue-example a:hover{background:#f0f1f2;text-decoration:none}
+.navbar-pills-blue-example li{margin-right:3px}
+.navbar-pills-blue-example li.active a,.navbar-pills-blue-example span{background:#2575ed;color:rgba(255,255,255,0.7)}
+
+

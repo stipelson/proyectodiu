@@ -11,77 +11,94 @@
 </head>
 <body>
 	<div class="units-row">
-		<div class="unit-centered unit-65">
+		<div class="unit-centered unit-100 ">
 
-			<div class="navigation-toggle" data-tools="navigation-toggle" data-target="#navbar-1">
+			<div class="navigation-toggle navigation-toggle-black " data-tools="navigation-toggle" data-target="#navbar-1">
 				<span>Menu</span>
 			</div>
 
 
-			<header id="navbar-1" class="group">
+			<header id="navbar-1" class="group navbar-gray-example">
+				<div class="unit-centered unit-65 ">
+					<nav class="navbar navbar-pills navbar-left ">
+						<ul>
 
-				<nav class="navbar navbar-pills navbar-left">
-					<ul>
-
-						<li <% if @current_pagina == 1 %> class="active" <% end %>><strong><%= link_to "TeLoMando", root_path %></strong></a></li>
+							<li <% if @current_pagina == 1 %> class="active" <% end %>><strong><%= link_to "TeLoMando", root_path %></strong></a></li>
 
 
-						<li <% if @current_pagina == 2 %> class="active" <% end %>><a href="#">Ayuda</a></li>
-						<li><a href="#" data-tools="dropdown" data-target="#dropdown-objetos"><i class="fa fa-bell"></i> Objetos</a></li>
 
-					</ul>
-				</nav>
+							<li <% if @current_pagina == 2 %> class="active" <% end %>><a href="#">Ayuda</a></li>
+							<% if @sesion %>
 
-				<ul id="dropdown-objetos" class="dropdown">
+							<li><a href="#" data-tools="dropdown" data-target="#dropdown-objetos"><i class="fa fa-bell"></i> Objetos</a></li>
+
+							<% end %>
+						</ul>
+					</nav>
+
+					<ul id="dropdown-objetos" class="dropdown">
 					<li><a href=""  data-theme="blue" data-tools="tooltip" title="Los que has subido">Objetos que encontre</a></li>
 					<li><a href=""  data-theme="blue" data-tools="tooltip" title="Que alguien mas subio y crees que es tuyo">Objetos que son míos</a></li>
-				</ul>
-
-				<nav  class="navbar navbar-pills navbar-right">
-					<ul>
-
-						<% if @permiso_admin %>
-						<li><a href="#" data-tools="dropdown" data-target="#dropdown-admin"><i class="fa fa-cog"></i> Administrar</a></li>
-
-						<% end %>
-
-
-						<% if @sesion %>
-
-						<li><a href="#" data-tools="dropdown" data-target="#dropdown-user"><i class="fa fa-cog"></i> Cuenta</a></li>
-
-						<li><%= link_to 'Salir', :controller => 'login', :action => 'cerrar_sesion' %></li>
-
-
-						<% elsif @sesion == false %>
-
-						<li><%= link_to 'Ingresar', login_iniciar_sesion_path, :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Si ya tiene una cuenta' %></li>
-
-						<li><%= link_to "Registrarse", new_user_path, :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Si aun no tiene una cuenta' %></li>
-
-						<% end %>
-
-
 					</ul>
-				</nav>
 
-				<% if @sesion %>
+					<nav  class="navbar navbar-pills navbar-right ">
+						<ul>
 
-				<ul id="dropdown-admin" class="dropdown">
-					<li><%= link_to "Cuentas de usuarios", users_path, :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Administre los usuarios' %></li>
+							<% if @permiso_admin %>
+							<li><a href="#" data-tools="dropdown" data-target="#dropdown-admin"> Administrar</a></li>
 
-					<li><%= link_to "Administrar Objetos", articles_path, :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Administre los objetos en la aplicación' %></li>
-				</ul>
+							<% end %>
 
-				<ul id="dropdown-user" class="dropdown">
-					<li><%= link_to "Mis datos", edit_user_path(@current_user_id), :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Administre sus datos' %></li>
-				</ul>
 
-				<%end%>
+							<% if @sesion %>
 
+							<li><a href="#" data-tools="dropdown" data-target="#dropdown-user"> Cuenta</a></li>
+
+
+
+							<li><%= link_to login_cerrar_sesion_path, id:"logo" do %>
+							<i class="fa fa-sign-out"></i> Salir
+							<% end %></li>
+
+
+							<% elsif @sesion == false %>
+
+							<li><%= link_to 'Ingresar', login_iniciar_sesion_path, :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Si ya tiene una cuenta' %></li>
+
+							<li><%= link_to "Registrarse", new_user_path, :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Si aun no tiene una cuenta' %></li>
+
+							<% end %>
+
+
+						</ul>
+					</nav>
+				</div>
 			</header>
 
-			<hr>
+		</div>
+	</div>
+
+	<div class="units-row">
+		<div class="unit-centered unit-65 ">
+
+
+			<% if @sesion %>
+
+			<ul id="dropdown-admin" class="dropdown">
+				<li><%= link_to "Cuentas de usuarios", users_path, :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Administre los usuarios' %></li>
+
+				<li><%= link_to "Administrar Objetos", articles_path, :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Administre los objetos en la aplicación' %></li>
+			</ul>
+
+			<ul id="dropdown-user" class="dropdown">
+				<li><%= link_to "Mis datos", edit_user_path(@current_user_id), :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Administre sus datos' %></li>
+			</ul>
+
+			<%end%>
+
+
+
+
 
 			<div class="container">
 				<% flash.each do |key, value| %>
@@ -91,13 +108,23 @@
 					<%= value[value.index('&')+1, value.length] %>
 				</div>
 
-				      <% end %>
+				<% end %>
+
+
+
 
 				<ul class="blocks-2">
 					<li></li>
 					<li>
 						<div class="unit-push-right unit-70">
-							<input type="search" class="width-70" placeholder="Buscar un objeto">
+							<form method="post" action="" class="forms">
+								<label class="input-groups">
+									<input type="text" name="buscar" placeholder="Buscar" />
+									<span class="btn-append">
+										<button class="btn">Buscar</button>
+									</span>
+								</label>
+							</form>
 						</div>
 					</li>
 				</ul>
@@ -108,6 +135,7 @@
 
 			</div>
 		</div>
+	</div>
 
-	</body>
-	</html>
+</body>
+</html>

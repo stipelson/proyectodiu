@@ -1,8 +1,8 @@
 class InicioController < ApplicationController
   def bienvenido
-      	@loguin = logueado();
-
+      @loguin = logueado();
   	@current_pagina = 1
+      @categories = Category.all.order("nombre ASC")
   end
   private
 

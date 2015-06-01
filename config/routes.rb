@@ -32,6 +32,8 @@ Rails.application.routes.draw do
       resources :users
 
   post 'login/iniciar_sesion'
+  post 'login/cerrar_sesion'
+
 
   get 'login/cerrar_sesion'
 
