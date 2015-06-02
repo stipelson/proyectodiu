@@ -7,21 +7,34 @@
 <% end %>
 
 
+
+
 <ul class="blocks-2">
 
 	<li>
 
 		<fieldset>
 			<legend>
-				Añade los datos al objeto
+				¿Que clase de objeto es?
 			</legend>
-			<div class="unit-centered unit-70">
-				<%= e.label :nombre do %>
+			<p>Si es un objeto que perdiste y buscas marca la casilla, <br> si por el contrario es un objeto que encontraste y buscas su dueño dejala sin marcar.
+			</p>
+
+
+			<%= e.check_box (:busca) %>
+			<%= e.label(:busca, '¿Esta buscando este objeto?') %>
+
+		</fieldset>
+
+		<fieldset>
+			<legend>
+				Añade los datos del objeto
+			</legend>
+			<div class="forms">
+				<%= e.label :nombre do%>
 				Nombre<span class='req'>*</span>
 				<%= e.text_field(:nombre, class: 'width-100', :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Tu nombre') %>
 				<% end %>
-
-
 
 				<%= e.label :color do %> Color
 				<%= e.text_field(:color, class: 'width-100') %>
@@ -46,7 +59,7 @@
 				<% end %>
 
 				<%= e.label :categoria do %>
-				Categoria<span class="req">*</span>
+				Categoria<span ></span>
 
 				<%= e.collection_select(:category_id, @categories, :id, :nombre, {}, {class: "width-100"}) %>
 				<% end %>
@@ -59,6 +72,9 @@
 	</li>
 
 	<li>
+
+
+
 		<fieldset>
 			<legend>
 				Añade una foto
@@ -67,6 +83,7 @@
 			</p>
 			<%= e.file_field(:photo,  :'data-tools' => 'upload') %>
 		</fieldset>
+
 		<fieldset>
 			<legend>
 				Envia el objeto.
@@ -74,7 +91,6 @@
 			<p>
 				<%= e.submit "Enviar", class: "btn btn-green" %> <%= link_to "Cancelar", articles_path, class: "btn btn-red" %>
 			</p>
-
 		</fieldset>
 
 	</li>

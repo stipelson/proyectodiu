@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150601032712) do
+ActiveRecord::Schema.define(version: 20150602053936) do
 
   create_table "articles", force: true do |t|
     t.string   "nombre"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20150601032712) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+    t.boolean  "busca"
   end
 
   add_index "articles", ["category_id"], name: "index_articles_on_category_id"

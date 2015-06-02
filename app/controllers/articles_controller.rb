@@ -70,6 +70,7 @@ class ArticlesController < ApplicationController
 		    @lugar = @article.lugar;
 		    @category_id = @article.category_id	;
 		    @user_id = @article.user_id;
+				@busca = @article.busca;
 	end
 
 		def update
@@ -113,7 +114,7 @@ class ArticlesController < ApplicationController
 
 
 	def article_params
-		params.require(:article).permit(:nombre, :marca, :color, :descripcion, :lugar, :category_id, :photo)
+		params.require(:article).permit(:nombre, :marca, :color, :descripcion, :lugar, :category_id, :photo, :busca)
 	end
 
 	def find_article
