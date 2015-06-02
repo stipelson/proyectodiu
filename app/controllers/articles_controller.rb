@@ -32,7 +32,7 @@ class ArticlesController < ApplicationController
 
 
 		 if @article.save()
-		 	redirect_to root_path, :notice => "success&El producto  ha sido creado";
+		 	redirect_to root_path, :notice => "green&El objeto ha sido subido";
 		 else
 		 	render "new";
 		 end
@@ -48,9 +48,9 @@ class ArticlesController < ApplicationController
 		if permiso_admin();
 			@article = Article.find(params[:id]);
 			if @article.destroy()
-				redirect_to articles_path, :notice => "red&El articulo ha sido eliminado";
+				redirect_to articles_path, :notice => "red&El objeto ha sido eliminado";
 			else
-				redirect_to articles_path, :notice => "red&El articulo NO ha podido ser eliminado";
+				redirect_to articles_path, :notice => "red&El objeto NO ha podido ser eliminado";
 			end
 		else
 			redirect_to root_path;

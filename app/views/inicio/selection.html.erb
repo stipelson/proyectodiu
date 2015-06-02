@@ -6,7 +6,7 @@
 		<nav class="nav nav-stacked " >
 
 			<ul>
-				<li ><%= link_to "Encontre un objeto", new_article_path, :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Subir un objeto que hayas encontrado', :'class' =>'btn-n'%></li>
+				<li ><%= link_to "Subir un objeto", new_article_path, :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Subir un objeto que hayas encontrado', :'class' =>'btn-n'%></li>
 			</ul>
 		</nav>
 		<div data-tools="navigation-fixed">
@@ -34,13 +34,11 @@
 
 	<div class="unit-80">
 
-
+<h2><%= @category.nombre.capitalize %></h2>
+<hr>
 		<ul class="blocks-4">
 
-
-
-
-
+		
 			<% @articles.each do |article| %>
 			<% if  article.category_id == @category.id %>
 
@@ -49,6 +47,7 @@
 				border-top-left-radius: 50px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px;
 				border-right: 2px solid #e0e3e5;
 				border-bottom: 2px solid #e0e3e5;">
+					
 				<%=  link_to image_tag(article.photo.url()), article_path(article)%>
 
 				<figcaption style="margin-left: 7px;"><%= article.nombre %></figcaption>

@@ -2,12 +2,11 @@ class InicioController < ApplicationController
 	def bienvenido
 		@loguin = logueado();
 		@count= 0
+		@countTwo = 0
 		@current_pagina = 1
-
 		@articles = Article.all.order("created_at ASC")
 		@categories = Category.all.order("created_at ASC")
-
-
+		@categoriesFour = @categories.first(4)
 	end
 
 	def selection
@@ -17,7 +16,6 @@ class InicioController < ApplicationController
 		@category = Category.find(params[:id]);
 		@articles = Article.all.order("created_at ASC")
 	end
-
 
 	private
 

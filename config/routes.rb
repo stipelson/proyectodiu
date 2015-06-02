@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'dashboard/index'
+
   resources :categories
 
   	get '/inicio/categoria/:id', to: 'inicio#selection', as: 'selection'

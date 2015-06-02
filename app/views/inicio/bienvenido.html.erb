@@ -6,7 +6,7 @@
 		<nav class="nav nav-stacked " >
 
 			<ul>
-				<li ><%= link_to "Encontre un objeto", new_article_path, :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Subir un objeto que hayas encontrado', :'class' =>'btn-n'%></li>
+				<li ><%= link_to "Subir un objeto", new_article_path, :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Subir un objeto que hayas encontrado', :'class' =>'btn-n'%></li>
 			</ul>
 		</nav>
 		<div data-tools="navigation-fixed">
@@ -34,21 +34,23 @@
 
 	<div class="unit-80">
 
-	<% @categories.each do |category| %>
+	<% @categoriesFour.each do |c| %>
+<% @countTwo = 0 %>
 
+<h2><%= c.nombre.capitalize %></h2>
+
+<hr>
 		<ul class="blocks-4">
 
 
-
-
-
-			<% @articles.first(4).each do |article| %>
-
+			<% @articles.each do |article| %>
+			
+			<% if @countTwo < 4 and article.category == c %>
 
 
 			<li <% if @count == 4 %> class="block-first" <% @count = 0 %><% end %>>
 				<figure  style="background: white; border-top-right-radius: 50px;
-				border-top-left-radius: 50px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px;
+				border-top-left-radius: 50px; border-bottom-right-radius: 5px; border-bottom-left-radius: 20px;
 				border-right: 2px solid #e0e3e5;
 				border-bottom: 2px solid #e0e3e5;">
 				<%=  link_to image_tag(article.photo.url()), article_path(article)%>
@@ -73,8 +75,9 @@
 
 			</figure>
 		</li>
-		<% @count +=1 %>
-
+		<% @count += 1 %>
+		<% @countTwo += 1 %>
+		<% end %>
 		<% end %>
 	</ul>
 	<% end %>

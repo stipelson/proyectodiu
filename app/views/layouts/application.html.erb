@@ -38,7 +38,7 @@
 
 					<ul id="dropdown-objetos" class="dropdown">
 					<li><a href=""  data-theme="blue" data-tools="tooltip" title="Los que has subido">Objetos que encontre</a></li>
-					<li><a href=""  data-theme="blue" data-tools="tooltip" title="Que alguien mas subio y crees que es tuyo">Objetos que son míos</a></li>
+					<li><a href=""  data-theme="blue" data-tools="tooltip" title="Que alguien mas subio y crees que es tuyo">Objetos que solicite</a></li>
 					</ul>
 
 					<nav  class="navbar navbar-pills navbar-right ">
@@ -103,7 +103,7 @@
 			<div class="container">
 				<% flash.each do |key, value| %>
 
-				<div class="tools-alert tools-alert-<%= value[0, value.index('&')] %> ">
+				<div class="tools-alert tools-alert-<%= value[0, value.index('&')] %>">
 
 					<%= value[value.index('&')+1, value.length] %>
 				</div>
