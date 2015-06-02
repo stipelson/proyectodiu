@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
-  get 'dashboard/index'
+  get 'dashboard/index/:id', to: 'dashboard#index', as: 'objetos'
 
   resources :categories
 
   	get '/inicio/categoria/:id', to: 'inicio#selection', as: 'selection'
+
+    get 'dashboard/index'  
 
   get 'articles/index'
 

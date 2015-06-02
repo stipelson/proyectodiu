@@ -4,7 +4,7 @@ class InicioController < ApplicationController
 		@count= 0
 		@countTwo = 0
 		@current_pagina = 1
-		@articles = Article.all.order("created_at ASC")
+		@articles = Article.all.order("created_at DESC")
 		@categories = Category.all.order("created_at ASC")
 		@categoriesFour = @categories.first(4)
 	end

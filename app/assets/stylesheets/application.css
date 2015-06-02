@@ -25,6 +25,25 @@ body {background: #f7f7f7;}
 
 .navbar-gray-example{background:#e0e3e5;}
 
+.nav-tabs a,.nav-tabs span{
+	display:block;
+	line-height:1;
+	padding:.825em 1.65em;
+	border:1px solid transparent;
+  background: white
+}
+
+.nav-tabs li.active a,.nav-tabs span{
+	color:#0f0f0f;
+	background:#f7f7f7;
+	position:relative;
+	border:1px solid #ddd;
+	border-bottom:1px solid #f7f7f7;
+	bottom:-1px;
+	cursor:default;
+	text-decoration:none
+}
+
 .navigation-fixed.navbar-gray-example{padding:10px 15px 0px 15px;background:rgba(255,255,255,0.95);box-shadow:0 1px 3px rgba(0,0,0,0.3)}
 .navigation-fixed.navbar-black-example{padding:0}
 .navigation-fixed.navbar-black-example a{padding:12px 15px}
@@ -58,5 +77,3 @@ body {background: #f7f7f7;}
 .navbar-pills-blue-example a:hover{background:#f0f1f2;text-decoration:none}
 .navbar-pills-blue-example li{margin-right:3px}
 .navbar-pills-blue-example li.active a,.navbar-pills-blue-example span{background:#2575ed;color:rgba(255,255,255,0.7)}
-
-

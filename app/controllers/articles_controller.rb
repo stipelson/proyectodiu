@@ -5,7 +5,7 @@ class ArticlesController < ApplicationController
 		if permiso_admin();
 			@articles = Article.all.order("created_at DESC")
 		else
-			redirect_to root_path;
+			redirect_to objetos_path(1);
 		end
 	end
 
@@ -76,7 +76,7 @@ class ArticlesController < ApplicationController
 		logueado();
 		if @article.update(article_params)
 			@nombre_a = params[:article][:nombre];
-			redirect_to articles_path, :notice => "success&El objeto #{@nombre_a} ha sido actualizado"
+			redirect_to articles_path, :notice => "green&El objeto #{@nombre_a} ha sido actualizado"
 		else
 			render "edit";
 		end

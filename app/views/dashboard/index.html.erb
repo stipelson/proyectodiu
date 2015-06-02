@@ -1,2 +1,76 @@
-<h1>Dashboard#index</h1>
-<p>Find me in app/views/dashboard/index.html.erb</p>
+<h1><%= @user.nombre.capitalize %></h1>
+
+<hr>
+
+<nav class="nav-tabs" data-tools="tabs" data-equals="true" data-active='<%="#panel#{@pagina}"%>'>
+    <ul>
+        <li class="active"><a href='#panel1'> Objetos subidos </a></li>
+        <li><a href="#panel2"> Objetos que busco </a></li>
+        <li><a href="#panel3"> Objetos solicitados </a></li>
+
+    </ul>
+</nav>
+
+<div id="panel1">
+  <% @articles.each do |article| %>
+
+
+
+  <div data-tools="accordion">
+
+    <a href= '<%= "#panel#{article.id}"%>' class="accordion-title btn-n"><%= article.nombre.capitalize %></a>
+    <div id= '<%= "panel#{article.id}"%>' class="accordion-panel btn-n">
+      <div class="units-row">
+        <div class="unit-30">
+          <dl>
+            <dt>Nombre</dt>
+            <dd><%= article.nombre.capitalize%></dd>
+
+            <dt>Lo subio</dt>
+            <dd> <%= article.user.nombre.capitalize %></dd>
+
+            <dt>Categoria</dt>
+            <dd><%= article.category.nombre%></dd>
+          </dl>
+        </div>
+        <div class="unit-30">
+          <%= image_tag article.photo.url(:small) %>
+
+        </div>
+        <div class="unit-30">
+          <dl>
+            <dt>Descripcion</dt>
+            <dd><%= article.descripcion %></dd>
+          </dl>
+        </div>
+      </div>
+
+      <%= link_to 'Ver',  article_path(article), :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Si ya tiene una cuenta', :'class' => 'btn btn-smaller btn-blue'%>
+      <%= link_to 'Editar', edit_article_path(article), :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Si ya tiene una cuenta', :'class' => 'btn btn-smaller btn-green'%>
+      <%= link_to 'Eliminar', article_path(article), method: :delete, data: { confirm: '¿Esta seguro de querer eliminar el objeto ' +article.nombre.capitalize+ '?' }, :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Si ya tiene una cuenta', :'class' => 'btn btn-smaller btn-red'%>
+
+
+    </div>
+
+  </div>
+
+  <% end %>
+
+</div>
+<div id="panel2">
+
+
+
+
+
+
+</div>
+
+<div id="panel3">
+
+
+
+
+
+
+</div>

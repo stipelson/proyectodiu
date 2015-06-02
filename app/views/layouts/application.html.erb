@@ -37,8 +37,11 @@
 					</nav>
 
 					<ul id="dropdown-objetos" class="dropdown">
-					<li><a href=""  data-theme="blue" data-tools="tooltip" title="Los que has subido">Objetos que encontre</a></li>
-					<li><a href=""  data-theme="blue" data-tools="tooltip" title="Que alguien mas subio y crees que es tuyo">Objetos que solicite</a></li>
+					<li><%= link_to "Objetos que subi", objetos_path(1), :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Los que has encontrado y subido' %></li>
+					<li><%= link_to "Objetos que busco", objetos_path(2), :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Los que buscas' %></li>
+					<li><%= link_to "Objetos que solicite", objetos_path(3), :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Que alguien mas subio y crees que es tuyo' %></li>
+
+
 					</ul>
 
 					<nav  class="navbar navbar-pills navbar-right ">
@@ -96,22 +99,7 @@
 
 			<%end%>
 
-
-
-
-
 			<div class="container">
-				<% flash.each do |key, value| %>
-
-				<div class="tools-alert tools-alert-<%= value[0, value.index('&')] %>">
-
-					<%= value[value.index('&')+1, value.length] %>
-				</div>
-
-				<% end %>
-
-
-
 
 				<ul class="blocks-2">
 					<li></li>
@@ -128,6 +116,15 @@
 						</div>
 					</li>
 				</ul>
+
+				<% flash.each do |key, value| %>
+
+				<div class="tools-alert tools-alert-<%= value[0, value.index('&')] %>">
+
+					<%= value[value.index('&')+1, value.length] %>
+				</div>
+
+				<% end %>
 
 
 				<%= yield %>
