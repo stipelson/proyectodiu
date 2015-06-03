@@ -7,6 +7,10 @@ class DashboardController < ApplicationController
       @pagina = ""+params[:id];
       @user = User.find(@current_user_id)
       @articles = Article.where(:user => @user).order('created_at DESC');
+      @petitions  = Petition.all
+      @petitionsDeMios = Petition.where(article: @articles)
+
+      @petitionsDeOtros = Petition.where(user: @user)
     else
       redirect_to root_path;
     end
@@ -32,6 +36,5 @@ class DashboardController < ApplicationController
       return false;
     end
   end
-
 
 end

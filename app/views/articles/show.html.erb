@@ -1,35 +1,105 @@
-	<div class="units-row">
+<div class="units-row">
 
 	<div class="unit-60">
 
-				<figure  style="background: white; border-top-right-radius: 50px;
-				border-top-left-radius: 50px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px;
-				border-right: 2px solid #e0e3e5;
-				border-bottom: 2px solid #e0e3e5;">
-				<%=  link_to image_tag(@article.photo.url()), article_path(@article.id)%>
+		<figure  style="background: white; border-top-right-radius: 5px;
+		border-top-left-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px;
+		border-right: 2px solid #e0e3e5;
+		border-bottom: 2px solid #e0e3e5;">
+		<%=  link_to image_tag(@article.photo.url()), article_path(@article.id)%>
 
-				<figcaption style="margin-left: 7px;"><%= @article.nombre %></figcaption>
-				<p style="margin-left: 7px; margin-bottom: 3px;">
-					<small><%= @article.user.usuario %></small> &mdash; <cite><%= @article.category.nombre %></cite>
-				</p>
+		<figcaption style="margin-left: 7px;"><%= @article.nombre %></figcaption>
+		<p style="margin-left: 7px; margin-bottom: 3px;">
+			<small><%= @article.user.usuario %></small> &mdash; <cite><%= @article.category.nombre %></cite>
+		</p>
 
-<!-- 				<div class="units-row" style="margin-bottom: 0px;">
-					<div class="unit-push-right">
-						<nav class="nav" style="margin-bottom: 0px;">
-							<ul>
+		<!-- 				<div class="units-row" style="margin-bottom: 0px;">
+			<div class="unit-push-right">
+			<nav class="nav" style="margin-bottom: 0px;">
+			<ul>
 
-								<li ><a href="#"><i class="fa fa-eye"></i> Button</a></li>
-							</ul>
-						</nav>
+			<li ><a href="#"><i class="fa fa-eye"></i> Button</a></li>
+		</ul>
+	</nav>
 
-					</div>
-				</div> -->
+</div>
+</div> -->
 
-
-			</figure>
+</figure>
 </div>
 
-<div class="unit-60">
+<div class="unit-40">
+
+	<fieldset>
+		<legend>
+			Informacion
+		</legend>
+		<dl>
+			<dt>Nombre</dt>
+			<dd><%= @article.nombre.capitalize%></dd>
+
+			<dt>Marca</dt>
+			<dd><%= @article.marca.capitalize%></dd>
+
+			<dt>Color</dt>
+			<dd><%= @article.color.capitalize%></dd>
+
+			<dt>Descripcion</dt>
+			<dd> <%= @article.descripcion %></dd>
+
+			<% if !@article.busca %>
+
+			<dt>Lugar donde fue encontrado</dt>
+			<dd><%= @article.lugar.capitalize %></dd>
+
+			<% end %>
+
+		</dl>
+	</fieldset>
+	<fieldset>
+
+		<% if @article.user.id != @current_user_id%>
+
+		<% if @article.busca %>
+		<legend>
+		 ¿Encontraste este objeto?
+		</legend>
+
+
+		<p>Si encontraste este objeto, puedes hacerle saber al dueño que lo hayaste.</p>
+
+		<%= link_to "Lo encontre", new_article_petition_path(@article), class: "btn btn-green" %>
+
+		<% else %>
+
+		<legend>
+		 ¿El objeto es tuyo?
+		</legend>
+
+		<p>Si crees que este objeto es tuyo, puedes hacerle saber al dueño que es tuyo.</p>
+
+		<%= link_to "Es mio", new_article_petition_path(@article), class: "btn btn-green" %>
+
+
+		<% end %>
+		<% end %>
+
+		<% if @article.user.id == @current_user_id%>
+
+		<legend>
+		Acciones sobre el objeto
+		</legend>
+
+			<%= link_to 'Ver',  article_path(@article), :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Si ya tiene una cuenta', :'class' => 'btn btn-blue'%>
+			<%= link_to 'Editar', edit_article_path(@article), :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Si ya tiene una cuenta', :'class' => 'btn btn-green'%>
+			<%= link_to 'Eliminar', article_path(@article), method: :delete, data: { confirm: '¿Esta seguro de querer eliminar el objeto ' +@article.nombre.capitalize+ '?' }, :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Si ya tiene una cuenta', :'class' => 'btn btn-red'%>
+
+		<% end %>
+
+	</fieldset>
+
+
+
 </div>
 
 

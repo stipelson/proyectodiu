@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  encontrado_a: false
+  solicitado_a: false
+  user_id: 
+  article_id: 
+  razon: MyText
+
+two:
+  encontrado_a: false
+  solicitado_a: false
+  user_id: 
+  article_id: 
+  razon: MyText

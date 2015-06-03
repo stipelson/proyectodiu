@@ -1,11 +1,16 @@
 Rails.application.routes.draw do
+
   get 'dashboard/index/:id', to: 'dashboard#index', as: 'objetos'
+
+  resources :articles do
+    resources :petitions
+  end
 
   resources :categories
 
   	get '/inicio/categoria/:id', to: 'inicio#selection', as: 'selection'
 
-    get 'dashboard/index'  
+    get 'dashboard/index'
 
   get 'articles/index'
 
@@ -32,6 +37,8 @@ Rails.application.routes.draw do
   get 'users/edit'
 
   resources :articles
+
+  resources :petitions
 
   get 'inicio/bienvenido'
     root 'inicio#bienvenido'

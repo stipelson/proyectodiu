@@ -1,0 +1,19 @@
+<div class="units-row">
+
+	<div class="unit-60">
+
+
+<%= form_for([@article, @petition]) do |f| %>
+
+
+    <%= f.label :razon %>
+    <%= f.text_area :razon %>
+
+
+</div>
+<div class= 'unit-40'>
+  <%= f.submit "Enviar", class: "btn btn-green" %> <%= link_to "Cancelar", articles_path, class: "btn btn-red" %>
+</div>
+</div>
+
+<% end %>
