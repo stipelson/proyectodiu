@@ -47,12 +47,18 @@
 			<dt>Descripcion</dt>
 			<dd> <%= @article.descripcion %></dd>
 
-			<% if !@article.busca %>
 
-			<dt>Lugar donde fue encontrado</dt>
+
+			<dt>
+				<% if @article.busca %>
+				Lugar donde se perdio
+				<% else %>
+				Lugar donde fue encontrado
+				<% end %>
+			</dt>
 			<dd><%= @article.lugar.capitalize %></dd>
 
-			<% end %>
+
 
 		</dl>
 	</fieldset>

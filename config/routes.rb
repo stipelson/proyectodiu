@@ -8,7 +8,9 @@ Rails.application.routes.draw do
 
   resources :categories
 
-  	get '/inicio/categoria/:id', to: 'inicio#selection', as: 'selection'
+  	get '/inicio/categoria/:categoria', to: 'inicio#selection', as: 'scategoria'
+
+    get '/inicio/tipo/:tipo', to: 'inicio#selection_tipe', as: 'stipo'
 
     get 'dashboard/index'
 

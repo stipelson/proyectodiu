@@ -32,7 +32,7 @@ gem 'spring',        group: :development
 gem "font-awesome-rails"
 # Use unicorn as the app server
 # gem 'unicorn'
-
+gem 'htmlbeautifier'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

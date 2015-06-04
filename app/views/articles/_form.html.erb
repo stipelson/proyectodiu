@@ -17,12 +17,19 @@
 			<legend>
 				¿Que clase de objeto es?
 			</legend>
-			<p>Si es un objeto que perdiste y buscas marca la casilla, <br> si por el contrario es un objeto que encontraste y buscas su dueño dejala sin marcar.
+			<p>Si es un objeto que perdiste y lo estas buscando. Si por el contrario es un objeto que encontraste y buscas su dueño; marca la csilla correspondiente.
 			</p>
 
+			<%= e.label :busca do%>
+			<%= e.radio_button :busca, '1', :checked => true %>
+			¿Esta buscando este objeto?
+		  <% end %>
+			<br>
+			<%= e.label :busca do%>
+		  <%= e.radio_button :busca, '0' %>
+			¿Busca su dueño?
+			<% end %>
 
-			<%= e.check_box (:busca) %>
-			<%= e.label(:busca, '¿Esta buscando este objeto?') %>
 
 		</fieldset>
 

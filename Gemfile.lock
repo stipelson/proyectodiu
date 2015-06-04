@@ -45,6 +45,7 @@ GEM
     font-awesome-rails (4.3.0.0)
       railties (>= 3.2, < 5.0)
     hike (1.2.3)
+    htmlbeautifier (1.1.0)
     i18n (0.7.0)
     jbuilder (2.2.13)
       activesupport (>= 3.0.0, < 5)
@@ -125,6 +126,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
   font-awesome-rails
+  htmlbeautifier
   jbuilder (~> 2.0)
   jquery-rails
   jquery-turbolinks

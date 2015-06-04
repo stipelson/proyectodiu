@@ -7,14 +7,36 @@ class InicioController < ApplicationController
 		@articles = Article.all.order("created_at DESC")
 		@categories = Category.all.order("created_at ASC")
 		@categoriesFour = @categories.first(4)
+
 	end
 
 	def selection
-		@loguin = logueado();
-		@categories = Category.all.order("created_at ASC")
-		@count= 0
-		@category = Category.find(params[:id]);
-		@articles = Article.all.order("created_at ASC")
+		if params[:categoria]
+			@loguin = logueado();
+			@categories = Category.all.order("created_at ASC")
+			@count= 0
+			@category = Category.find(params[:categoria]);
+			@articles = Article.all.order("created_at ASC")
+		else
+			redirect_to root_path;
+		end
+	end
+
+	def selection_tipe
+		if params[:tipo]
+			@loguin = logueado();
+			@categories = Category.all.order("created_at ASC")
+			@count= 0
+			@articles = Article.all
+			if params[:tipo] == '1'
+				@busca = 't'
+			else
+				@busca = 'f'
+			end
+			@articlesBuscados = Article.where("busca = '#{@busca}'").order("created_at ASC")
+		else
+			redirect_to root_path;
+		end
 	end
 
 	private
@@ -25,6 +47,5 @@ class InicioController < ApplicationController
 		else
 			return false;
 		end
-
 	end
 end
