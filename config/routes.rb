@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
 
-  get 'dashboard/index/:id', to: 'dashboard#index', as: 'objetos'
+
+
+
+  scope "(:locale)", locale: /es|en/ do
+    resources :articles
+
+      get 'dashboard/index/:id', to: 'dashboard#index', as: 'objetos'
 
   resources :articles do
     resources :petitions
@@ -8,11 +14,11 @@ Rails.application.routes.draw do
 
   resources :categories
 
-  	get '/inicio/categoria/:categoria', to: 'inicio#selection', as: 'scategoria'
+  get '/inicio/categoria/:categoria', to: 'inicio#selection', as: 'scategoria'
 
-    get '/inicio/tipo/:tipo', to: 'inicio#selection_tipe', as: 'stipo'
+  get '/inicio/tipo/:tipo', to: 'inicio#selection_tipe', as: 'stipo'
 
-    get 'dashboard/index'
+  get 'dashboard/index'
 
   get 'articles/index'
 
@@ -30,31 +36,24 @@ Rails.application.routes.draw do
 
   get 'article/edit'
 
-  get 'users/index'
-
-  get 'users/show'
-
-  get 'users/new'
-
-  get 'users/edit'
-
-  resources :articles
-
   resources :petitions
 
-  get 'inicio/bienvenido'
-    root 'inicio#bienvenido'
-      resources :users
+  root 'inicio#bienvenido'
+
+    resources :users
 
   post 'login/iniciar_sesion'
   post 'login/cerrar_sesion'
-
 
   get 'login/cerrar_sesion'
 
   get 'login/iniciar_sesion'
 
   get 'inicio/bienvenido'
+
+ end
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,107 +1,107 @@
 <%= form_for(@article, :html => { :multipart=> 'true'  }) do |e| %>
 
-<% @article.errors.full_messages.each do |message| %>
-<div class="tools-alert tools-alert-red">
-	<strong><%= pluralize(@article.errors.count, " Error, ") %></strong> El <%= message %>
-</div>
-<% end %>
+	<% @article.errors.full_messages.each do |message| %>
+	<div class="tools-alert tools-alert-red">
+		<strong><%= pluralize(@article.errors.count, " Error, ") %></strong> El <%= message %>
+	</div>
+	<% end %>
 
 
 
 
-<ul class="blocks-2">
+	<ul class="blocks-2">
 
-	<li>
+		<li>
 
-		<fieldset>
-			<legend>
-				¿Que clase de objeto es?
-			</legend>
-			<p>Si es un objeto que perdiste y lo estas buscando. Si por el contrario es un objeto que encontraste y buscas su dueño; marca la csilla correspondiente.
-			</p>
+			<fieldset>
+				<legend>
+					¿Que clase de objeto es?
+				</legend>
+				<p>Si es un objeto que perdiste y lo estas buscando. Si por el contrario es un objeto que encontraste y buscas su dueño; marca la csilla correspondiente.
+				</p>
 
-			<%= e.label :busca do%>
-			<%= e.radio_button :busca, '1', :checked => true %>
-			¿Esta buscando este objeto?
-		  <% end %>
-			<br>
-			<%= e.label :busca do%>
-		  <%= e.radio_button :busca, '0' %>
-			¿Busca su dueño?
-			<% end %>
-
-
-		</fieldset>
-
-		<fieldset>
-			<legend>
-				Añade los datos del objeto
-			</legend>
-			<div class="forms">
-				<%= e.label :nombre do%>
-				Nombre<span class='req'>*</span>
-				<%= e.text_field(:nombre, class: 'width-100', :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Tu nombre') %>
+				<%= e.label :busca do%>
+				<%= e.radio_button :busca, '1', :checked => true %>
+				¿Esta buscando este objeto?
 				<% end %>
-
-				<%= e.label :color do %> Color
-				<%= e.text_field(:color, class: 'width-100') %>
-				<% end %>
-
-				<%= e.label :marca do %>
-				Marca<span class='req'>*</span>
-				<%= e.text_field(:marca, class: 'width-100', :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'El que usaras para iniciar sesion') %>
-				<% end %>
-
-				<%= e.label :lugar do %>
-				lugar<span class="req">*</span>
-
-				<%= e.text_field(:lugar, class: 'width-100', :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'La usaras para iniciar sesion') %>
+				<br>
+				<%= e.label :busca do%>
+				<%= e.radio_button :busca, '0' %>
+				¿Buscas su dueño?
 				<% end %>
 
 
-				<%= e.label :descripcion do %>
-				Descripcion<span class="req">*</span>
+			</fieldset>
 
-				<%= e.text_area(:descripcion, class: 'width-100', :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Correo electronico', :'rows' => '4') %>
-				<% end %>
+			<fieldset>
+				<legend>
+					Añade los datos del objeto
+				</legend>
+				<div class="forms">
+					<%= e.label :nombre do%>
+					Nombre<span class='req'>*</span>
+					<%= e.text_field(:nombre, class: 'width-100', :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Tu nombre') %>
+					<% end %>
 
-				<%= e.label :categoria do %>
-				Categoria<span ></span>
+					<%= e.label :color do %> Color
+					<%= e.text_field(:color, class: 'width-100') %>
+					<% end %>
 
-				<%= e.collection_select(:category_id, @categories, :id, :nombre, {}, {class: "width-100"}) %>
-				<% end %>
+					<%= e.label :marca do %>
+					Marca<span class='req'>*</span>
+					<%= e.text_field(:marca, class: 'width-100', :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'El que usaras para iniciar sesion') %>
+					<% end %>
 
+					<%= e.label :lugar do %>
+					lugar<span class="req">*</span>
 
-
-			</div>
-		</fieldset>
-
-	</li>
-
-	<li>
-
-
-
-		<fieldset>
-			<legend>
-				Añade una foto
-			</legend>
-			<p>Toma una foto del articulo, de no tenerla tendras que describirlo muy bien.
-			</p>
-			<%= e.file_field(:photo,  :'data-tools' => 'upload') %>
-		</fieldset>
-
-		<fieldset>
-			<legend>
-				Envia el objeto.
-			</legend>
-			<p>
-				<%= e.submit "Enviar", class: "btn btn-green" %> <%= link_to "Cancelar", articles_path, class: "btn btn-red" %>
-			</p>
-		</fieldset>
-
-	</li>
-</ul>
+					<%= e.text_field(:lugar, class: 'width-100', :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'La usaras para iniciar sesion') %>
+					<% end %>
 
 
-<% end %>
+					<%= e.label :descripcion do %>
+					Descripcion<span class="req">*</span>
+
+					<%= e.text_area(:descripcion, class: 'width-100', :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Correo electronico', :'rows' => '4') %>
+					<% end %>
+
+					<%= e.label :categoria do %>
+					Categoria<span ></span>
+
+					<%= e.collection_select(:category_id, @categories, :id, :nombre, {}, {class: "width-100"}) %>
+					<% end %>
+
+
+
+				</div>
+			</fieldset>
+
+		</li>
+
+		<li>
+
+
+
+			<fieldset>
+				<legend>
+					Añade una foto
+				</legend>
+				<p>Toma una foto del articulo, de no tenerla tendras que describirlo muy bien.
+				</p>
+				<%= e.file_field(:photo,  :'data-tools' => 'upload') %>
+			</fieldset>
+
+			<fieldset>
+				<legend>
+					Envia el objeto.
+				</legend>
+				<p>
+					<%= e.submit "Enviar", class: "btn btn-green" %> <%= link_to "Cancelar", articles_path, class: "btn btn-red" %>
+				</p>
+			</fieldset>
+
+		</li>
+	</ul>
+
+
+	<% end %>

@@ -20,4 +20,26 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+ layouts:
+  application:
+   title: "Objetos"
+   signIn: "Sign In"
+   signUp: "Sign Up"
+   signOut: "Sign Out"
+   account: "Account"
+   help: "Help"
+   search: "Search"
+   admin: "Manage"
+   userAccounts: "User accounts"
+   manageObjects: "Manage objects"
+   myData: "My data"
+   language: "Language"
+   objects: "Objects"
+ login:
+  iniciar_sesion:
+   logear: "Log In"
+   user: "User"
+   pass: "Password"
+   log: "Log In"
+
+

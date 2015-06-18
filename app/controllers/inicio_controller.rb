@@ -7,6 +7,11 @@ class InicioController < ApplicationController
 		@articles = Article.all.order("created_at DESC")
 		@categories = Category.all.order("created_at ASC")
 		@categoriesFour = @categories.first(4)
+		respond_to do |format|
+			format.html
+			format.json
+		end
+
 
 	end
 
