@@ -14,8 +14,6 @@ class PetitionsController < ApplicationController
 		else
 			redirect_to new_user_path;
 		end
-
-
   end
 
   def create
@@ -30,12 +28,6 @@ class PetitionsController < ApplicationController
      @petition = Petition.new(petition_params)
      @petition.article = @article
      @petition.user = @user
-
-     if @article.busca
-       @petition.encontrado_a = 1
-     else
-       @petition.solicitado_a = 1
-     end
 
 
      if @petition.save()

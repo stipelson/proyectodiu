@@ -37,10 +37,11 @@
               <li>
                 <%= link_to "Objetos que busco", objetos_path(2), :'data-theme'=> 'blue', :'data-tools' => 'tooltip', :'title' => 'Los que buscas' %></li>
                 <li>
-                  <%= link_to "Objetos que solicite", objetos_path(3), :'data-theme'=> 'blue', :'data-tools' => 'tooltip', :'title' => 'Que alguien mas subio y crees que es tuyo' %></li>
+                  <%= link_to "Solicitudes", objetos_path(3), :'data-theme'=> 'blue', :'data-tools' => 'tooltip', :'title' => 'Que alguien mas subio y crees que es tuyo' %></li>
                 </ul>
                 <nav class="navbar navbar-pills navbar-right ">
                   <ul>
+
                     <% if @permiso_admin %>
                     <li><a href="#" data-tools="dropdown" data-target="#dropdown-admin"> <%= I18n.t('layouts.application.admin') %></a></li>
                     <% end %>
@@ -64,6 +65,10 @@
             </div>
             <div class="units-row">
               <div class="unit-centered unit-70 ">
+                <ul id="dropdown-2" class="dropdown">
+                <li><%=link_to ('ES'), request.env['PATH_INFO'].sub('en','es')%></li>
+                  <li><%= link_to ('EN'), request.env['PATH_INFO'].sub('es','en')%></li>
+                </ul>
                 <% if @sesion %>
                 <ul id="dropdown-admin" class="dropdown">
                   <li>
@@ -80,15 +85,6 @@
                         <ul class="blocks-2">
                           <li>
                             <div class="unit-centered unit-5">
-
-                              <button class="btn btn-black" data-tools="dropdown" data-target="#dropdown-2"><%= I18n.t('layouts.application.language') %></button>
-                              <ul id="dropdown-2" class="dropdown">
-
-                                <li><%=link_to ('Español'), request.env['PATH_INFO'].sub('en','es')%></li>
-
-                                <li><%= link_to ('English'), request.env['PATH_INFO'].sub('es','en')%></li>
-
-                              </ul>
 
                             </div>
                           </li>
@@ -111,16 +107,16 @@
                         </div>
                         <% end %>
 
-
-
-
-
-
-
-
-
-
                         <%= yield %>
+                        <hr>
+
+                        <div class="units-row">
+                          <div class="unit-push-right">
+                          <div class= "languaje">
+                          <a href="#" data-tools="dropdown" data-target="#dropdown-2" ><i class="fa fa-language fa-lg"></i>  Idioma</a>
+                          </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>

@@ -1,0 +1,138 @@
+
+
+
+          <h2>Solicitudes que realizan de objetos que encontre</h2>
+  <hr>
+
+  <% @petitionesQueMeHacen.each do |petition| %>
+    <% if petition.article.busca == false %>
+  <div data-tools="accordion">
+
+    <a href= '<%= "#panes#{petition.id}"%>' class="accordion-title btn-n"><%= petition.article.nombre.capitalize %>
+
+      <% if petition.aprobado == nil%>
+      <span class="label label-blue">Nevo</span>
+      <% end %>
+
+    </a>
+    <div id= '<%= "panes#{petition.id}"%>' class="accordion-panel btn-n">
+      <div class="units-row">
+        <div class="unit-30">
+          <dl>
+            <dt>Usuario que realiza la peticion:</dt>
+            <dd><%= petition.user.nombre.capitalize %></dd>
+
+            <dt>Razon por la que cree que es suyo:</dt>
+            <dd><%= petition.razon%></dd>
+          </dl>
+        </div>
+        <div class="unit-30">
+          <%= image_tag petition.article.photo.url(:small) %>
+
+        </div>
+        <div class="unit-30">
+          <dl>
+            <dt>Estado</dt>
+
+            <%if petition.solicitado_a == nil%>
+            <span class="label label-outline label-yellow">En espera</span>
+            <%elsif petition.solicitado_a == false%>
+            <span class="label label-outline label-red">No aprobado</span>
+            <%elsif petition.solicitado_a == true%>
+            <span class="label label-outline label-green">Aprobado</span>
+            <%end%>
+          </dl>
+
+          <%= link_to 'Aprobar', "#", id: "aprobar#{petition.id}", :'class' => 'btn btn-smaller btn-green',  data: {id: "aprobar#{petition.id}", title: "¿Crees que el es el dueño?", toggle: "modal", content: "#ajax-aprobado", tools: "modal", width: "700"}%>
+          <%= link_to 'No aprobar', "#", id: "modal#{petition.id}", :'class' => 'btn btn-smaller btn-red',  data: {id: "modal#{petition.id}", title: "¿No crees que el sea el dueño?", toggle: "modal", content: "#ajax-modal", tools: "modal", width: "700"}%>
+
+
+            <div id="ajax-modal" class="modal hide fade" tabindex="-1">
+            <div class='modal-header'>
+            </div>
+            <div class='modal-body'>
+              <div class="modal-body-content"><%=petition.razon %></div>
+              <div class="ajax-loader"></div>
+            </div>
+            <div class='modal-footer'>
+            </div>
+          </div>
+
+          <div id="ajax-aprobado" class="modal hide fade" tabindex="-1">
+            <div class='modal-header'>
+            </div>
+            <div class='modal-body'>
+              <div class="modal-body-content">
+              <blockquote><b>Si apruebas la solicitud tu correo sera enviado al usuario que solicito el objeto.</b></blockquote>
+                <ul>
+                <li>Datos del usuario que realizo la peticion</li>
+                    <ul>
+                      <li><%=petition.user.nombre.capitalize %></li>
+                      <li><%=petition.user.correo %></li>
+                      <li><%=petition.user.usuario %></li>
+                    </ul>
+                <li>Razon por la cual solicito el objeto</li>
+                    <ul>
+                      <li><%=petition.razon %></li>
+                    </ul>
+                </ul>
+
+
+
+              </div>
+              <div class="ajax-loader"></div>
+            </div>
+            <div class='modal-footer'>
+            </div>
+          </div>
+
+
+          <script>
+            $(function()
+            {
+              $("#modal<%= petition.id%>").on('loading.tools.modal', function(modal)
+              {
+                this.createCancelButton('Cancelar');
+
+                var buttonDelete = this.createDeleteButton('Continuar');
+
+                buttonDelete.on('click', $.proxy(function()
+                {
+                  window.location.replace("/dashboard/noaprob/<%= petition.id%>");
+
+                  this.modal.close();
+
+                }, this));
+              });
+            });
+          </script>
+
+          <script>
+            $(function()
+            {
+              $("#aprobar<%= petition.id%>").on('loading.tools.modal', function(modal)
+              {
+                this.createCancelButton('Cancelar');
+
+                var buttonAction = this.createActionButton('Aprobar');
+
+                buttonAction.on('click', $.proxy(function()
+                {
+                  window.location.replace("/dashboard/aprob/<%= petition.id%>");
+
+                  this.modal.close();
+
+                }, this));
+              });
+            });
+          </script>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <% end %>
+  <% end %>
+

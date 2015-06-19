@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150603181617) do
+ActiveRecord::Schema.define(version: 20150618205008) do
 
   create_table "articles", force: true do |t|
     t.string   "nombre"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 20150603181617) do
     t.text     "razon"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "aprobado"
   end
 
   add_index "petitions", ["article_id"], name: "index_petitions_on_article_id"

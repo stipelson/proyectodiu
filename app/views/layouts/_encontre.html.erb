@@ -1,0 +1,41 @@
+<div id="ajax-modal" class="modal hide fade" tabindex="-1">
+
+	<div class='modal-header'>
+
+	</div>
+
+	<div class='modal-body'>
+		<div class="modal-body-content">Aqui va el contenido del modal lel</div>
+		<div class="ajax-loader"></div>
+	</div>
+
+	<div class='modal-footer'>
+
+	</div>
+
+</div>
+
+
+
+
+
+<script>
+	$(function()
+	{
+		$('#show-modal').on('loading.tools.modal', function(modal)
+		{
+			this.createCancelButton('Cancel');
+
+			var buttonAction = this.createActionButton('Save');
+
+			buttonAction.on('click', $.proxy(function()
+			{
+
+				this.modal.close();
+
+			}, this));
+		});
+	});
+</script>
+
+

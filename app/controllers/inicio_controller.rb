@@ -35,7 +35,7 @@ class InicioController < ApplicationController
 			@articles = Article.all
 			if params[:tipo] == '1'
 				@busca = 't'
-			else
+			elsif params[:tipo] == '2'
 				@busca = 'f'
 			end
 			@articlesBuscados = Article.where("busca = '#{@busca}'").order("created_at ASC")

@@ -19,7 +19,9 @@ Rails.application.routes.draw do
   get '/inicio/tipo/:tipo', to: 'inicio#selection_tipe', as: 'stipo'
 
   get 'dashboard/index'
-
+  get 'dashboard/noaprob/:id', to: 'dashboard#noaprob', as: 'noaprobado'
+   get 'dashboard/aprob/:id', to: 'dashboard#aprob', as: 'aprobado'
+     get 'dashboard/aprobenviado/:id', to: 'dashboard#aprobenviado', as: 'aprobadoEnvio'
   get 'articles/index'
 
   get 'articles/new'

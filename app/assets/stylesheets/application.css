@@ -13,9 +13,11 @@
  *= require_tree .
  *= require_self
  *= require font-awesome
+ *= require owl.carousel
+ *= require owl.theme
  */
 
-body {
+ body {
   background: #f7f7f7;
 }
 .nav-stacked a {
@@ -150,4 +152,35 @@ body {
 .navbar-pills-blue-example li.active a, .navbar-pills-blue-example span {
   background: #2575ed;
   color: rgba(255, 255, 255, 0.7)
+}
+
+.postImg{
+  background: white; border-top-right-radius: 50px;
+  border-top-left-radius: 50px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px;
+  border-right: 2px solid #e0e3e5;
+  border-bottom: 2px solid #e0e3e5;
+}
+
+.languaje a{
+  text-decoration: none;
+}
+
+/* unvisited link */
+.languaje a:link {
+    color: #000000;
+}
+
+/* visited link */
+.languaje a:visited {
+    color: #134DA5;
+}
+
+/* mouse over link */
+.languaje a:hover {
+    color: #134DA5;
+}
+
+/* selected link */
+.languaje a:active {
+    color: #134DA5;
 }

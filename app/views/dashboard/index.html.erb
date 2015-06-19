@@ -6,7 +6,8 @@
     <ul>
         <li class="active"><a href='#panel1'> Objetos que encontre </a></li>
         <li><a href="#panel2"> Objetos que busco </a></li>
-        <li><a href="#panel3"> Solicitudes </a></li>
+        <li><a href="#panel3"> Solicitudes</a></li>
+        <li><a href="#panel4"> Notificaciones objetos que busco</a></li>
     </ul>
 </nav>
 
@@ -122,112 +123,14 @@
 
   <% end %>
 
+</div>
+<div id="panel3">
 
+<%= render :partial => 'modalEnvie'%>
+<%= render :partial => 'modalEncontre'%>
 
 </div>
 
-<div id="panel3">
-
-  <h2>Solicitudes que he realizado de objetos</h2>
-
-  <hr>
-
-  <% @petitionsDeOtros.each do |petition| %>
-
-
-  <div data-tools="accordion">
-
-    <a href= '<%= "#panes#{petition.article.id}"%>' class="accordion-title btn-n"><%= petition.article.nombre.capitalize %></a>
-    <div id= '<%= "panes#{petition.article.id}"%>' class="accordion-panel btn-n">
-      <div class="units-row">
-        <div class="unit-30">
-          <dl>
-            <dt>Nombre</dt>
-            <dd><%= petition.article.nombre.capitalize%></dd>
-
-            <dt>Lo subio</dt>
-            <dd> <%= petition.article.user.nombre.capitalize %></dd>
-
-            <dt>Categoria</dt>
-            <dd><%= petition.article.category.nombre%></dd>
-          </dl>
-        </div>
-        <div class="unit-30">
-          <%= image_tag petition.article.photo.url(:small) %>
-
-        </div>
-        <div class="unit-30">
-          <dl>
-            <dt>Descripcion</dt>
-            <dd><%= petition.article.descripcion %></dd>
-            <dt>tipo</dt>
-            <dd>
-              <% if petition.article.busca == true %>
-              El objeto esta marcado como se busca
-              <% else %>
-              El objeto esta marcado como "en espera de su dueño"
-              <% end %>
-
-            </dd>
-          </dl>
-        </div>
-      </div>
-
-
-    </div>
-
-  </div>
-  <% end %>
-  <br>
-
-  <h2>Solicitudes que realizan de un objeto que encontre</h2>
-  <hr>
-
-  <% @petitionsDeMios.each do |petition| %>
-
-  <div data-tools="accordion">
-
-    <a href= '<%= "#panes#{petition.id}"%>' class="accordion-title btn-n"><%= petition.article.nombre.capitalize %></a>
-    <div id= '<%= "panes#{petition.id}"%>' class="accordion-panel btn-n">
-      <div class="units-row">
-        <div class="unit-30">
-          <dl>
-            <dt>Nombre</dt>
-            <dd><%= petition.razon%></dd>
-
-            <dt>Lo subio</dt>
-            <dd> <%= petition.article.user.nombre.capitalize %></dd>
-
-            <dt>Categoria</dt>
-            <dd><%= petition.article.category.nombre%></dd>
-          </dl>
-        </div>
-        <div class="unit-30">
-          <%= image_tag petition.article.photo.url(:small) %>
-
-        </div>
-        <div class="unit-30">
-          <dl>
-            <dt>Descripcion</dt>
-            <dd><%= petition.article.descripcion %></dd>
-            <dt>tipo</dt>
-            <dd>
-              <% if petition.article.busca == true %>
-              El objeto esta marcado como se busca
-              <% else %>
-              El objeto esta marcado como "en espera de su dueño"
-              <% end %>
-
-            </dd>
-          </dl>
-        </div>
-      </div>
-
-
-    </div>
-
-  </div>
-
-  <% end %>
+<div id="panel4">
 
 </div>
