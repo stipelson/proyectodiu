@@ -4,12 +4,14 @@ class ArticlesController < ApplicationController
 	def index
 		if permiso_admin();
 			@articles = Article.all.order("created_at DESC")
+			notificaciones()
 		else
 			redirect_to objetos_path(1);
 		end
 	end
 
 	def show
+		notificaciones()
 		@user = User.find(@current_user_id)
 		@peticiones = Petition.where(user: @user, article: @article)
 
@@ -18,6 +20,7 @@ class ArticlesController < ApplicationController
 	def new
 
 		if logueado()
+			notificaciones()
 			@user = User.find(@current_user_id)
 			@categories = Category.all()
 			@article = Article.new();
@@ -65,6 +68,7 @@ class ArticlesController < ApplicationController
 	end
 
 	def find
+		notificaciones()
 		@categories = Category.all
 		@loguin = logueado();
 		@count= 0
@@ -74,6 +78,7 @@ class ArticlesController < ApplicationController
 
 	def edit
 		    logueado();
+		    notificaciones()
 		    @categories = Category.all();
 		    @article = Article.find(params[:id]);
 		    @nombre = @article.nombre;

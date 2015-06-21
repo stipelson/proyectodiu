@@ -13,9 +13,52 @@ class ApplicationController < ActionController::Base
 		{ locale: I18n.locale }
 	end
 
-	private
+	def notificaciones
+		@current_user = User.find(@current_user_id)
 
-	def get_login
+		@articles = Article.where(:user => @current_user).order('created_at DESC');
+		@petitions = Petition.all
+	      # peticiones cuando los articulos que son iguales a el articulod e la peticion
+	      @petitionesQueMeHacen = Petition.where(article: @articles)
+	      # peticiones cuando el user de la peticion soy yo osea que hice
+	      @petitionesQueHice = Petition.where(user: @current_user)
+
+
+	      @contadorNotificaciones = 0
+
+	      @contadorSolicitudes = 0
+
+
+	      	@petitionesQueMeHacen.each do |petition|
+	      		if petition.article.busca == true
+	      			if petition.aprobado == nil
+	      				@contadorNotificaciones += 1
+	      			end
+	      		else
+	      			if petition.aprobado == nil
+	      				@contadorSolicitudes += 1
+	      			end
+	      		end
+
+	      	end
+
+
+
+	      	@petitionesQueHice.each do |petition|
+	      		if defined? petition.article.busca and petition.article.busca == false
+	      			if petition.aprobado == true
+	      				@contadorSolicitudes += 1
+	      			end
+	      		end
+	      	end
+
+
+
+	  end
+
+	  private
+
+	  def get_login
 			#Verifica si el usuario está logueado. Primero pregunta si existe la session[:logueado] y además que este sea true, si existe devuelve la sesión sino existe devuelve false.
 			if defined?(session[:logueado]) and session[:logueado]
 				 #Está logueado.

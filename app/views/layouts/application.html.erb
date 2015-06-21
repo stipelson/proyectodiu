@@ -27,7 +27,13 @@
             <li <% if @current_pagina==2 %> class="active"
               <% end %>><a href="#"><%= I18n.t('layouts.application.help')  %></a></li>
               <% if @sesion %>
-              <li><a href="#" data-tools="dropdown" data-target="#dropdown-objetos"><i class="fa fa-bell"></i> <%= I18n.t('layouts.application.objects') %></a></li>
+              <li><a href="#" data-tools="dropdown" data-target="#dropdown-objetos"><i class="fa fa-bell"></i> <%= I18n.t('layouts.application.objects') %>
+              <%if defined? @contadorSolicitudes and @contadorNotificaciones%>
+                <%if @contadorNotificaciones > 0 or @contadorSolicitudes > 0%>
+                <div class="badge badge-blue"><%=@contadorNotificaciones + @contadorSolicitudes%></div>
+                <%end%>
+                <%end%>
+              </a></li>
               <% end %>
             </ul>
           </nav>
@@ -37,98 +43,115 @@
               <li>
                 <%= link_to "Objetos que busco", objetos_path(2), :'data-theme'=> 'blue', :'data-tools' => 'tooltip', :'title' => 'Los que buscas' %></li>
                 <li>
-                  <%= link_to "Solicitudes", objetos_path(3), :'data-theme'=> 'blue', :'data-tools' => 'tooltip', :'title' => 'Que alguien mas subio y crees que es tuyo' %></li>
-                  <li>
-                  <%= link_to "Notificaciones", objetos_path(4), :'data-theme'=> 'blue', :'data-tools' => 'tooltip', :'title' => 'Notificaciones de objetos que busco' %></li>
-                </ul>
-                <nav class="navbar navbar-pills navbar-right ">
-                  <ul>
+                  <%= link_to objetos_path(3), :'data-theme'=> 'blue', :'data-tools' => 'tooltip', :'title' => 'Que alguien mas subio y crees que es tuyo'  do%>
+                  Solicitudes
+                  <%if defined? @contadorSolicitudes and @contadorNotificaciones and @contadorSolicitudes > 0%>
 
-                    <% if @permiso_admin %>
-                    <li><a href="#" data-tools="dropdown" data-target="#dropdown-admin"> <%= I18n.t('layouts.application.admin') %></a></li>
+                  <span class="badge badge-blue"><%=@contadorSolicitudes%></span>
+
+                  <%end%>
+                  <%end%>
+                </li>
+                <li>
+                  <%= link_to objetos_path(4), :'data-theme'=> 'blue', :'data-tools' => 'tooltip', :'title' => 'Notificaciones de objetos que busco'  do%>
+                  Notificaciones
+                  <%if defined? @contadorSolicitudes and @contadorNotificaciones and @contadorNotificaciones > 0 %>
+
+                  <div class="badge badge-blue"><%=@contadorNotificaciones%></div>
+                  <%end%>
+                  <%end%>
+
+                </li>
+              </ul>
+              <nav class="navbar navbar-pills navbar-right ">
+                <ul>
+
+                  <% if @permiso_admin %>
+                  <li><a href="#" data-tools="dropdown" data-target="#dropdown-admin"> <%= I18n.t('layouts.application.admin') %></a></li>
+                  <% end %>
+                  <% if @sesion %>
+                  <li><a href="#" data-tools="dropdown" data-target="#dropdown-user">  <%= I18n.t('layouts.application.account') %></a></li>
+                  <li>
+                    <%= link_to login_cerrar_sesion_path, id: "logo" do %> <i class="fa fa-sign-out"></i> <%= I18n.t('layouts.application.signOut') %>
                     <% end %>
-                    <% if @sesion %>
-                    <li><a href="#" data-tools="dropdown" data-target="#dropdown-user">  <%= I18n.t('layouts.application.account') %></a></li>
-                    <li>
-                      <%= link_to login_cerrar_sesion_path, id: "logo" do %> <i class="fa fa-sign-out"></i> <%= I18n.t('layouts.application.signOut') %>
-                      <% end %>
-                    </li>
-                    <% elsif @sesion == false %>
-                    <li>
-                      <%=link_to I18n.t('layouts.application.signIn') , login_iniciar_sesion_path, :'data-theme'=> 'blue', :'data-tools' => 'tooltip', :'title' => 'Si ya tiene una cuenta' %></li>
-                      <li>
-                        <%=link_to I18n.t('layouts.application.signUp') , new_user_path, :'data-theme'=> 'blue', :'data-tools' => 'tooltip', :'title' => 'Si aun no tiene una cuenta' %></li>
-                        <% end %>
-                      </ul>
-                    </nav>
-                  </div>
-                </header>
-              </div>
-            </div>
-            <div class="units-row">
-              <div class="unit-centered unit-70 ">
-                <ul id="dropdown-2" class="dropdown">
-                <li><%=link_to ('ES'), request.env['PATH_INFO'].sub('en','es')%></li>
-                  <li><%= link_to ('EN'), request.env['PATH_INFO'].sub('es','en')%></li>
-                </ul>
-                <% if @sesion %>
-                <ul id="dropdown-admin" class="dropdown">
+                  </li>
+                  <% elsif @sesion == false %>
                   <li>
-                    <%= link_to I18n.t('layouts.application.userAccounts'), users_path, :'data-theme'=> 'blue', :'data-tools' => 'tooltip', :'title' => 'Administre los usuarios' %></li>
+                    <%=link_to I18n.t('layouts.application.signIn') , login_iniciar_sesion_path, :'data-theme'=> 'blue', :'data-tools' => 'tooltip', :'title' => 'Si ya tiene una cuenta' %></li>
                     <li>
-                      <%= link_to I18n.t('layouts.application.manageObjects'), articles_path, :'data-theme'=> 'blue', :'data-tools' => 'tooltip', :'title' => 'Administre los objetos en la aplicación' %></li>
+                      <%=link_to I18n.t('layouts.application.signUp') , new_user_path, :'data-theme'=> 'blue', :'data-tools' => 'tooltip', :'title' => 'Si aun no tiene una cuenta' %></li>
+                      <% end %>
                     </ul>
-                    <ul id="dropdown-user" class="dropdown">
-                      <li>
-                        <%= link_to I18n.t('layouts.application.myData'), edit_user_path(@current_user_id), :'data-theme'=> 'blue', :'data-tools' => 'tooltip', :'title' => 'Administre sus datos' %></li>
-                      </ul>
-                      <%end%>
-                      <div class="container">
-                        <ul class="blocks-2">
-                          <li>
-                            <div class="unit-centered unit-5">
+                  </nav>
+                </div>
+              </header>
+            </div>
+          </div>
+          <div class="units-row">
+            <div class="unit-centered unit-70 ">
+              <ul id="dropdown-2" class="dropdown">
+                <li><%=link_to ('ES'), request.env['PATH_INFO'].sub('en','es')%></li>
+                <li><%= link_to ('EN'), request.env['PATH_INFO'].sub('es','en')%></li>
+              </ul>
+              <% if @sesion %>
+              <ul id="dropdown-admin" class="dropdown">
+                <li>
+                  <%= link_to I18n.t('layouts.application.userAccounts'), users_path, :'data-theme'=> 'blue', :'data-tools' => 'tooltip', :'title' => 'Administre los usuarios' %></li>
+                  <li>
+                    <%= link_to I18n.t('layouts.application.manageObjects'), articles_path, :'data-theme'=> 'blue', :'data-tools' => 'tooltip', :'title' => 'Administre los objetos en la aplicación' %></li>
+                  </ul>
+                  <ul id="dropdown-user" class="dropdown">
+                    <li>
+                      <%= link_to I18n.t('layouts.application.myData'), edit_user_path(@current_user_id), :'data-theme'=> 'blue', :'data-tools' => 'tooltip', :'title' => 'Administre sus datos' %></li>
+                    </ul>
+                    <%end%>
+                    <div class="container">
+                      <ul class="blocks-2">
+                        <li>
+                          <div class="unit-centered unit-5">
 
-                            </div>
-                          </li>
-                          <li>
-                            <div class="unit-push-right unit-70">
-
-
-
-                                  <%= form_for :articles, :url => articles_find_path, :html => { :class=> 'forms'  } do %>
-                                  <label class="input-groups">
-                                    <%= text_field_tag :busqueda%>
-                                     <span class="btn-append">
-                                    <button class="btn btn-blue"><%= I18n.t('layouts.application.search')  %></button>
-
-                                    </span>
-                                    </label>
-                                  <%end%>
-
-
-
-
-                            </div>
-                          </li>
-                        </ul>
-                        <% flash.each do |key, value| %>
-                        <div class="tools-alert tools-alert-<%= value[0, value.index('&')] %>">
-                          <%= value[value.index( '&')+1, value.length] %>
-                        </div>
-                        <% end %>
-
-                        <%= yield %>
-                        <hr>
-
-                        <div class="units-row">
-                          <div class="unit-push-right">
-                          <div class= "languaje">
-                          <a href="#" data-tools="dropdown" data-target="#dropdown-2" ><i class="fa fa-language fa-lg"></i>  Idioma</a>
                           </div>
+                        </li>
+                        <li>
+                          <div class="unit-push-right unit-70">
+
+
+
+                            <%= form_for :articles, :url => articles_find_path, :html => { :class=> 'forms'  } do %>
+                            <label class="input-groups">
+                              <%= text_field_tag :busqueda%>
+                              <span class="btn-append">
+                                <button class="btn btn-blue"><%= I18n.t('layouts.application.search')  %></button>
+
+                              </span>
+                            </label>
+                            <%end%>
+
+
+
+
+                          </div>
+                        </li>
+                      </ul>
+                      <% flash.each do |key, value| %>
+                      <div class="tools-alert tools-alert-<%= value[0, value.index('&')] %>">
+                        <%= value[value.index( '&')+1, value.length] %>
+                      </div>
+                      <% end %>
+
+                      <%= yield %>
+                      <hr>
+
+                      <div class="units-row">
+                        <div class="unit-push-right">
+                          <div class= "languaje">
+                            <a href="#" data-tools="dropdown" data-target="#dropdown-2" ><i class="fa fa-language fa-lg"></i>  Idioma</a>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </body>
-                </html>
+                </div>
+
+              </body>
+              </html>

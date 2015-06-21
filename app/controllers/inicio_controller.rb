@@ -48,6 +48,7 @@ class InicioController < ApplicationController
 
 	def logueado
 		if sesion_identi() and defined?(@current_user_id)
+			notificaciones()
 			return true;
 		else
 			return false;

@@ -4,7 +4,7 @@ class LoginController < ApplicationController
     @noperfil = false;
 
 	@sesion = get_login();
-	
+
     if @sesion == false
 
         if request.post?
@@ -30,6 +30,7 @@ class LoginController < ApplicationController
 
     @sesion = get_login();
     if @sesion
+
       logout();
     else
       redirect_to :controller => "login", :action => "iniciar_sesion";

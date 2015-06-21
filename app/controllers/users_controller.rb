@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   def index
     if permiso_admin();
+      notificaciones()
     	@users = User.all()
         if params[:tipo];
           @tipo = params[:tipo];
@@ -13,6 +14,7 @@ class UsersController < ApplicationController
 
   def show
     if regular() or permiso_admin();
+      notificaciones()
   	 @user = User.find(params[:id]);
     else
      redirect_to :controller => "inicio", :action => "bienvenido";
@@ -21,6 +23,7 @@ class UsersController < ApplicationController
 
   def new
     if regular();
+      notificaciones()
            redirect_to :controller => "inicio", :action => "bienvenido";
     else
       @user = User.new();
@@ -29,6 +32,7 @@ class UsersController < ApplicationController
 
   def edit
     logueado();
+    notificaciones()
     @user = User.find(params[:id]);
       @nombre = @user.nombre;
       @apellido = @user.apellido;

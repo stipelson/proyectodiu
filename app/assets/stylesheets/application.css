@@ -13,8 +13,6 @@
  *= require_tree .
  *= require_self
  *= require font-awesome
- *= require owl.carousel
- *= require owl.theme
  */
 
  body {
@@ -88,7 +86,7 @@
 .navbar-black-example a, .navbar-red-example a, .navbar-black-example a:hover, .navbar-red-example a:hover {
   color: #fff
 }
-.navbar-black-example li.active a, .navbar-red-example li.active a, .navbar-black-example span, .navbar-red-example span {
+.navbar-black-example li.active a, .navbar-red-example li.active a{
   color: rgba(255, 255, 255, 0.5)
 }
 .navbar-pills-black-example {
@@ -104,7 +102,7 @@
   color: #000;
   text-decoration: none;
 }
-.navbar-pills-black-example li.active a, .navbar-pills-black-example span {
+.navbar-pills-black-example li.active a {
   background: #363738;
   color: rgba(0, 0, 0, 0.8);
 }

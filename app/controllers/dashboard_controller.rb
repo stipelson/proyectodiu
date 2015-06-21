@@ -5,15 +5,7 @@ class DashboardController < ApplicationController
     if logueado()
       # 1 para la pagina de objetos subidos, 2 para la pagina de encontrados
       @pagina = ""+params[:id];
-      @user = User.find(@current_user_id)
-
-      @articles = Article.where(:user => @user).order('created_at DESC');
-      @petitions  = Petition.all
-      # peticiones cuando los articulos que son iguales a el articulod e la peticion
-      @petitionesQueMeHacen = Petition.where(article: @articles)
-      # peticiones cuando el user de la peticion soy yo osea que hice
-      @petitionesQueHice = Petition.where(user: @user)
-      # notificaciones cuando el buscar esta false y el articulo me pertenece
+      notificaciones()
 
     else
     	redirect_to root_path;
@@ -24,6 +16,7 @@ class DashboardController < ApplicationController
   def solicitados
     #hace referencia a los objetos que solicite como mios y que encontre en la plataforma
     if logueado()
+
     else
     	redirect_to root_path;
     end

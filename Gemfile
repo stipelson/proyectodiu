@@ -39,4 +39,4 @@ gem 'htmlbeautifier'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 gem 'nested_form'
-gem 'owlcarousel-rails'
+gem 'awesome_print'

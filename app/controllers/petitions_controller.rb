@@ -6,6 +6,7 @@ class PetitionsController < ApplicationController
 
   def new
     if logueado()
+      notificaciones()
 			@user = User.find(@current_user_id)
 
       @article = Article.find(params[:article_id])
@@ -19,6 +20,7 @@ class PetitionsController < ApplicationController
   def encontre
 
     if logueado()
+      notificaciones()
       @user = User.find(@current_user_id)
       if defined? params[:article_id]
       @article = Article.find(params[:article_id])
