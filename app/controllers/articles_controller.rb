@@ -9,6 +9,12 @@ class ArticlesController < ApplicationController
 		end
 	end
 
+	def show
+		@user = User.find(@current_user_id)
+		@peticiones = Petition.where(user: @user, article: @article)
+
+	end
+
 	def new
 
 		if logueado()
@@ -56,6 +62,13 @@ class ArticlesController < ApplicationController
 			redirect_to root_path;
 		end
 
+	end
+
+	def find
+		@categories = Category.all
+		@loguin = logueado();
+		@count= 0
+		@articles = Article.where(nombre: params[:busqueda])
 	end
 
 

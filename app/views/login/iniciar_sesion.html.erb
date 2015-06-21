@@ -3,21 +3,21 @@
   <div class="unit-centered unit-40">
 <fieldset>
 			<legend>
-				<h2 class="form-signin-heading"> Iniciar sesión </h2>
+				<h2 class="form-signin-heading"><%=  I18n.t('login.iniciar_sesion.logear')  %></h2>
 			</legend>
     <%= form_tag({:controller => "login", :action => "iniciar_sesion", :method => "post"}, class: "forms") do %>
 
 
 
     <label>
-     <%= text_field_tag "usuario", "", :required => "required", class: "width-100", placeholder: "Usuario" %>
+     <%= text_field_tag "usuario", "", :required => "required", class: "width-100", placeholder: I18n.t('login.iniciar_sesion.user') %>
    </label>
 
    <label>
-     <%= password_field_tag "password", "", :required => "required", class: "width-100", placeholder: "Contraseña" %>
+     <%= password_field_tag "password", "", :required => "required", class: "width-100", placeholder: I18n.t('login.iniciar_sesion.pass') %>
    </label>
 
-   <%= submit_tag "Ingresar", class: "btn btn-blue width-100" %>
+   <%= submit_tag I18n.t('login.iniciar_sesion.log'), class: "btn btn-blue width-100" %>
    <% end %>
 
    <% if @error_login %>

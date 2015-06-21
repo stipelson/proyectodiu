@@ -1,88 +1,84 @@
 <div class="units-row">
-	<div class="unit-20" >
+  <div class="unit-20">
+    <pre><h3>Objetos</h3></pre>
+    <nav class="nav nav-stacked " >
+      <ul>
+        <li><%= link_to "Subir un objeto", new_article_path, :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Subir un objeto que hayas encontrado', :'class' =>'btn-n'%></li>
+      </ul>
+    </nav>
+    <div data-tools="navigation-fixed">
+      <div data-tools="accordion">
+        <a href="#panelCategorias" class="accordion-title btn-n">Categorias</a>
 
-		<pre><h3>Objetos</h3></pre>
-		<nav class="nav nav-stacked " >
+        <div id="panelCategorias" class="accordion-panel btn-n">
+          <nav class="nav nav-stats" style ="margin-bottom: 0px;">
+            <% @categories.each do |c| %>
+              <ul>
+                <li><%= link_to scategoria_path(c) do %>
+                    <%= c.nombre %>
+                  <% end %>
+                  <sup><%= @articles.where("category_id = '#{c.id}'").count %></sup></li>
+              </ul>
+            <% end %>
+          </nav>
+        </div>
+        <a href="#panelTipo" class="accordion-title btn-n">Tipo</a>
+        <div id="panelTipo" class="accordion-panel btn-n">
+          <nav class="nav nav-stats" style ="margin-bottom: 0px;">
+              <ul>
+                <li><%= link_to stipo_path(1) do %>
+                    Se buscan
+                  <% end %>
+                  <sup><%= @articles.where("busca = 't'").count %></sup>
+                  </li>
+              </ul>
+              <ul>
+                <li><%= link_to stipo_path(2) do %>
+                    Encontrados
+                  <% end %>
+                  <sup><%= @articles.where("busca = 'f'").count %></sup>
+                  </li>
+              </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="unit-80">
+    <% @categoriesFour.each do |c| %>
+      <% @countTwo = 0 %>
+      <h2><%= c.nombre.capitalize %></h2>
+      <hr>
+      <ul class="blocks-4">
+        <% @articles.each do |article| %>
+          <% if @countTwo < 4 and article.category == c %>
+            <li <% if @count == 4 %> class="block-first" <% @count = 0 %><% end %>>
+              <figure  class= "postImg">
+                <%=  link_to image_tag(article.photo.url()), article_path(article)%>
+                <figcaption style="margin-left: 7px;"><%= article.nombre %></figcaption>
+                <p style="margin-left: 7px; margin-bottom: 3px;">
+                  <small><%= article.user.usuario %></small> &mdash; <cite><%= article.category.nombre %></cite><br>
+                  <%= link_to article_path(article) do %>
 
-			<ul>
-				<li ><%= link_to "Subir un objeto", new_article_path, :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Subir un objeto que hayas encontrado', :'class' =>'btn-n'%></li>
-			</ul>
-		</nav>
-		<div data-tools="navigation-fixed">
-			<div data-tools="accordion">
-				<a href="#panel1" class="accordion-title btn-n">Categorias</a>
-				<div id="panel1" class="accordion-panel btn-n">
-					<nav class="nav nav-stats">
-						<% @categories.each do |c| %>
-						<ul>
+                      <% if article.busca %>
+                      <span class="label label-outline label-blue">
+                      Se busca
+                    </span>
+                      <% else %>
+                      <span class="label label-outline ">
+                      Encontrado
+                    </span>
+                      <% end %>
 
-							<li><%= link_to selection_path(c) do %>
-								<%= c.nombre %>
-								<% end %>
-								<sup><%= @articles.where("category_id = '#{c.id}'").count %></sup></li>
-
-							</ul>
-							<% end %>
-						</nav>
-					</div>
-				</div>
-			</div>
-		</div>
-
-
-
-		<div class="unit-80">
-
-			<% @categoriesFour.each do |c| %>
-			<% @countTwo = 0 %>
-
-			<h2><%= c.nombre.capitalize %></h2>
-
-			<hr>
-			<ul class="blocks-4">
-
-
-				<% @articles.each do |article| %>
-
-				<% if @countTwo < 4 and article.category == c %>
-
-
-				<li <% if @count == 4 %> class="block-first" <% @count = 0 %><% end %>>
-					<figure  style="background: white; border-top-right-radius: 50px;
-					border-top-left-radius: 50px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px;
-					border-right: 2px solid #e0e3e5;
-					border-bottom: 2px solid #e0e3e5;">
-					<%=  link_to image_tag(article.photo.url()), article_path(article)%>
-
-					<figcaption style="margin-left: 7px;"><%= article.nombre %></figcaption>
-					<p style="margin-left: 7px; margin-bottom: 3px;">
-						<small><%= article.user.usuario %></small> &mdash; <cite><%= article.category.nombre %></cite>
-					</p>
-
-					<!-- 				<div class="units-row" style="margin-bottom: 0px;">
-						<div class="unit-push-right">
-						<nav class="nav" style="margin-bottom: 0px;">
-						<ul>
-
-						<li ><a href="#"><i class="fa fa-eye"></i> Button</a></li>
-					</ul>
-				</nav>
-
-			</div>
-		</div> -->
-
-
-	</figure>
-</li>
-<% @count += 1 %>
-<% @countTwo += 1 %>
-<% end %>
-<% end %>
-</ul>
-<% end %>
-
-
-
-
-</div>
+                  <% end %>
+                </p>
+              </figure>
+            </li>
+            <% @count += 1 %>
+            <% @countTwo += 1 %>
+          <% end %>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
 </div>

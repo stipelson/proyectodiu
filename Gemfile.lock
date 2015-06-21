@@ -45,6 +45,7 @@ GEM
     font-awesome-rails (4.3.0.0)
       railties (>= 3.2, < 5.0)
     hike (1.2.3)
+    htmlbeautifier (1.1.0)
     i18n (0.7.0)
     jbuilder (2.2.13)
       activesupport (>= 3.0.0, < 5)
@@ -62,6 +63,8 @@ GEM
     minitest (5.6.0)
     multi_json (1.11.0)
     nested_form (0.3.2)
+    owlcarousel-rails (1.1.3.3)
+      jquery-rails
     paperclip (4.2.1)
       activemodel (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -125,10 +128,12 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
   font-awesome-rails
+  htmlbeautifier
   jbuilder (~> 2.0)
   jquery-rails
   jquery-turbolinks
   nested_form
+  owlcarousel-rails
   paperclip
   rails (= 4.1.6)
   sass-rails (~> 4.0.3)
@@ -136,3 +141,6 @@ DEPENDENCIES
   spring
   sqlite3
   uglifier (>= 1.3.0)
+
+BUNDLED WITH
+   1.10.3

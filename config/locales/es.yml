@@ -1,0 +1,121 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+es:
+ layouts:
+  application:
+   title: "TeLoMando"
+   signIn: "Ingresar"
+   signInT: "Si ya tienes una cuenta"
+   signUp: "Registrarse"
+   signUpT: "Si aun no tienes un cuenta"
+   signOut: "Salir"
+   account: "Cuenta"
+   help: "Ayuda"
+   search: "Buscar"
+   admin: "Administrar"
+   userAccounts: "Cuentas de usuarios"
+   userAccountsT: "Administrar cuentas de usuarios"
+   manageObjects: "Administrar objetos"
+   manageObjectsT: "Administre los objetos en la aplicación"
+   myData: "Mis datos"
+   myDataT: "Administre sus datos"
+   language: "Idioma"
+   objects: "Objetos"
+   IUploadedObjects: "Objetos que subí"
+   IUploadedObjectsT: "Los que has encontrado y subido"
+   searchObjects: "Objetos que busco"
+   searchObjectsT: "Los que buscas y has subido"
+   petitions: "Peticiones"
+   petitions: "Los que alguien mas ha subido y crees que son tuyos"
+ login:
+  iniciar_sesion:
+   logear: "Iniciar sesión"
+   user: "Usuario"
+   pass: "Contraseña"
+   log: "Ingresar"
+  cerrar_sesion:
+   reEntry: "Volver a ingresar"
+   farewell: "La sesión ha sido cerrada. Hasta la próxima."
+ inicio:
+  bienvenido:
+   uploadObject: "Subir un objeto"
+   uploadObjectT: "Subir un objeto que hayas encontrado o que estes buscando"
+   categories: "Categorias"
+   type: "Tipo"
+   wanted: "Se busca"
+   wantedTitle: "Objetos que se buscan"
+   found: "Encontrado"
+   foundTitle: "Objetos que fueron encontrados"
+ articles:
+  new:
+   title: "Subir un objeto"
+   titleT: "que hayas encontrado o perdido"
+  edit:
+   title: "Editar objeto"
+   tittleT: "modificacion y/o actualizacion de datos"
+  index:
+   title: "Objetos"
+   titleT: "Lista de objetos"
+   buttonNew: "Subir un nuevo objeto"
+   name: "Nombre"
+   upploaded: "Lo subío"
+   category: "Categoria"
+   description: "Descripción"
+   show: "Ver"
+   edit: "Editar"
+   delete: "Eliminar"
+   deleteMs: "¿Esta seguro de querer eliminar el objeto"
+  show:
+   infoTitle: "Información"
+   name: "Nombre"
+   brand: "Marca"
+   color: "Color"
+   description: "Descripción"
+   place: "Lugar donde se perdio o fue encontrado"
+   actionsMyTitle: "Acciones sobre el objeto"
+   actionsWantedTitle: "¿Encontraste este objeto?"
+   actionsWantedText: "Si encontraste este objeto, puedes hacerle saber al dueño que lo hayaste."
+   actionesWantedButton: "Lo encontre"
+   actionsFoundTitle: ¿El objeto es tuyo?
+   actionsFoundText: "Si crees que este objeto es tuyo, puedes hacerle saber al dueño que es tuyo."
+   actionsFoundButton: "Es mio"
+  form:
+   typeTittle: "¿Que clase de objeto es?"
+   typeText: "Si es un objeto que perdiste y lo estas buscando. Si por el contrario es un objeto que encontraste y buscas su dueño; marca la csilla correspondiente."
+   typeSelect1: "¿Esta buscando este objeto? "
+   typeSelect2: "¿Buscas su dueño?"
+   dataTitle: "Añade los datos del objeto"
+   name: "Nombre"
+   nameT: "Nombre del objeto"
+   color: "Color"
+   place: "Lugar"
+   placeT: "Lugar donde se perdio o fue encontrado"
+   brand: "Marca"
+   brandT: "Fabricante y serial del objeto"
+   description: "Descripción"
+   descriptionT: "Añade una descripción del objeto"
+   category: "Categoria"
+   picTitle: "Añade una foto"
+   picText: "Toma una foto del articulo, de no tenerla tendras que describirlo muy bien."
+   sendTitle: "Envia el formulario"
+   buttonSend: "Enviar"
+   buttonCancel: "Cancelar"

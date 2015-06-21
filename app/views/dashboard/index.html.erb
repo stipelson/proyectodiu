@@ -3,231 +3,37 @@
 <hr>
 
 <nav class="nav-tabs" data-tools="tabs" data-equals="true" data-active='<%="#panel#{@pagina}"%>'>
-    <ul>
-        <li class="active"><a href='#panel1'> Objetos que encontre </a></li>
-        <li><a href="#panel2"> Objetos que busco </a></li>
-        <li><a href="#panel3"> Solicitudes </a></li>
-    </ul>
+	<ul>
+		<li class="active"><a href='#panel1'> Objetos que encontre </a></li>
+		<li><a href="#panel2"> Objetos que busco </a></li>
+		<li><a href="#panel3"> Solicitudes</a></li>
+		<li><a href="#panel4"> Notificaciones objetos que busco</a></li>
+	</ul>
 </nav>
 
 <div id="panel1">
-  <% @articles.each do |article| %>
 
-<% if !article.busca %>
-
-  <div data-tools="accordion">
-
-    <a href= '<%= "#pane#{article.id}"%>' class="accordion-title btn-n"><%= article.nombre.capitalize %></a>
-    <div id= '<%= "pane#{article.id}"%>' class="accordion-panel btn-n">
-      <div class="units-row">
-        <div class="unit-30">
-          <dl>
-            <dt>Nombre</dt>
-            <dd><%= article.nombre.capitalize%></dd>
-
-            <dt>Lo subio</dt>
-            <dd> <%= article.user.nombre.capitalize %></dd>
-
-            <dt>Categoria</dt>
-            <dd><%= article.category.nombre%></dd>
-          </dl>
-        </div>
-        <div class="unit-30">
-          <%= image_tag article.photo.url(:small) %>
-
-        </div>
-        <div class="unit-30">
-          <dl>
-            <dt>Descripcion</dt>
-            <dd><%= article.descripcion %></dd>
-            <dt>tipo</dt>
-            <dd>
-              <% if article.busca == true %>
-              El objeto esta marcado como se busca
-              <% else %>
-              El objeto esta marcado como "en espera de su dueño"
-              <% end %>
-
-            </dd>
-          </dl>
-        </div>
-      </div>
-
-      <%= link_to 'Ver',  article_path(article), :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Si ya tiene una cuenta', :'class' => 'btn btn-smaller btn-blue'%>
-      <%= link_to 'Editar', edit_article_path(article), :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Si ya tiene una cuenta', :'class' => 'btn btn-smaller btn-green'%>
-      <%= link_to 'Eliminar', article_path(article), method: :delete, data: { confirm: '¿Esta seguro de querer eliminar el objeto ' +article.nombre.capitalize+ '?' }, :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Si ya tiene una cuenta', :'class' => 'btn btn-smaller btn-red'%>
-
-
-    </div>
-
-  </div>
-  <% end %>
-
-  <% end %>
+<%= render :partial => 'panel1'%>
 
 </div>
+
 <div id="panel2">
 
-
-  <% @articles.each do |article| %>
-
-  <% if article.busca %>
-
-  <div data-tools="accordion">
-
-    <a href= '<%= "#pane#{article.id}"%>' class="accordion-title btn-n"><%= article.nombre.capitalize %></a>
-    <div id= '<%= "pane#{article.id}"%>' class="accordion-panel btn-n">
-      <div class="units-row">
-        <div class="unit-30">
-          <dl>
-            <dt>Nombre</dt>
-            <dd><%= article.nombre.capitalize%></dd>
-
-            <dt>Lo subio</dt>
-            <dd> <%= article.user.nombre.capitalize %></dd>
-
-            <dt>Categoria</dt>
-            <dd><%= article.category.nombre%></dd>
-          </dl>
-        </div>
-        <div class="unit-30">
-          <%= image_tag article.photo.url(:small) %>
-
-        </div>
-        <div class="unit-30">
-          <dl>
-            <dt>Descripcion</dt>
-            <dd><%= article.descripcion %></dd>
-            <dt>tipo</dt>
-            <dd>
-              <% if article.busca == true %>
-              El objeto esta marcado como se busca
-              <% else %>
-              El objeto esta marcado como "en espera de su dueño"
-              <% end %>
-
-            </dd>
-          </dl>
-        </div>
-      </div>
-
-      <%= link_to 'Ver',  article_path(article), :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Si ya tiene una cuenta', :'class' => 'btn btn-smaller btn-blue'%>
-      <%= link_to 'Editar', edit_article_path(article), :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Si ya tiene una cuenta', :'class' => 'btn btn-smaller btn-green'%>
-      <%= link_to 'Eliminar', article_path(article), method: :delete, data: { confirm: '¿Esta seguro de querer eliminar el objeto ' +article.nombre.capitalize+ '?' }, :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Si ya tiene una cuenta', :'class' => 'btn btn-smaller btn-red'%>
-
-    </div>
-
-  </div>
-  <% end %>
-
-  <% end %>
-
-
-
-</div>
+<%= render :partial => 'panel2'%>
 
 <div id="panel3">
 
-  <h2>Solicitudes que he realizado de objetos</h2>
-
-  <hr>
-
-  <% @petitionsDeOtros.each do |petition| %>
-
-
-  <div data-tools="accordion">
-
-    <a href= '<%= "#panes#{petition.article.id}"%>' class="accordion-title btn-n"><%= petition.article.nombre.capitalize %></a>
-    <div id= '<%= "panes#{petition.article.id}"%>' class="accordion-panel btn-n">
-      <div class="units-row">
-        <div class="unit-30">
-          <dl>
-            <dt>Nombre</dt>
-            <dd><%= petition.article.nombre.capitalize%></dd>
-
-            <dt>Lo subio</dt>
-            <dd> <%= petition.article.user.nombre.capitalize %></dd>
-
-            <dt>Categoria</dt>
-            <dd><%= petition.article.category.nombre%></dd>
-          </dl>
-        </div>
-        <div class="unit-30">
-          <%= image_tag petition.article.photo.url(:small) %>
-
-        </div>
-        <div class="unit-30">
-          <dl>
-            <dt>Descripcion</dt>
-            <dd><%= petition.article.descripcion %></dd>
-            <dt>tipo</dt>
-            <dd>
-              <% if petition.article.busca == true %>
-              El objeto esta marcado como se busca
-              <% else %>
-              El objeto esta marcado como "en espera de su dueño"
-              <% end %>
-
-            </dd>
-          </dl>
-        </div>
-      </div>
-
-
-    </div>
-
-  </div>
-  <% end %>
-  <br>
-
-  <h2>Solicitudes que realizan de un objeto que encontre</h2>
-  <hr>
-
-  <% @petitionsDeMios.each do |petition| %>
-
-  <div data-tools="accordion">
-
-    <a href= '<%= "#panes#{petition.id}"%>' class="accordion-title btn-n"><%= petition.article.nombre.capitalize %></a>
-    <div id= '<%= "panes#{petition.id}"%>' class="accordion-panel btn-n">
-      <div class="units-row">
-        <div class="unit-30">
-          <dl>
-            <dt>Nombre</dt>
-            <dd><%= petition.razon%></dd>
-
-            <dt>Lo subio</dt>
-            <dd> <%= petition.article.user.nombre.capitalize %></dd>
-
-            <dt>Categoria</dt>
-            <dd><%= petition.article.category.nombre%></dd>
-          </dl>
-        </div>
-        <div class="unit-30">
-          <%= image_tag petition.article.photo.url(:small) %>
-
-        </div>
-        <div class="unit-30">
-          <dl>
-            <dt>Descripcion</dt>
-            <dd><%= petition.article.descripcion %></dd>
-            <dt>tipo</dt>
-            <dd>
-              <% if petition.article.busca == true %>
-              El objeto esta marcado como se busca
-              <% else %>
-              El objeto esta marcado como "en espera de su dueño"
-              <% end %>
-
-            </dd>
-          </dl>
-        </div>
-      </div>
-
-
-    </div>
-
-  </div>
-
-  <% end %>
+<%= render :partial => 'panel3'%>
 
 </div>
+
+<div id="panel4">
+
+<%= render :partial => 'panel4'%>
+
+</div>
+
+
+
+
+

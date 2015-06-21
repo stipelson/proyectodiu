@@ -1,58 +1,66 @@
 Rails.application.routes.draw do
 
-  get 'dashboard/index/:id', to: 'dashboard#index', as: 'objetos'
 
-  resources :articles do
-    resources :petitions
-  end
 
-  resources :categories
 
-  	get '/inicio/categoria/:id', to: 'inicio#selection', as: 'selection'
+  scope "(:locale)", locale: /es|en/ do
+    resources :articles
+
+    get 'dashboard/index/:id', to: 'dashboard#index', as: 'objetos'
+
+    resources :articles do
+      resources :petitions
+    end
+
+    resources :categories
+
+    get '/inicio/categoria/:categoria', to: 'inicio#selection', as: 'scategoria'
+
+    get '/inicio/tipo/:tipo', to: 'inicio#selection_tipe', as: 'stipo'
 
     get 'dashboard/index'
+    get 'dashboard/noaprob/:id', to: 'dashboard#noaprob', as: 'noaprobado'
+    get 'dashboard/aprob/:id', to: 'dashboard#aprob', as: 'aprobado'
+    get 'dashboard/aprobenviado/:id', to: 'dashboard#aprobenviado', as: 'aprobadoEnvio'
+     get 'dashboard/aprobencontrado/:id', to: 'dashboard#aprobencontrado', as: 'aprobadoEncontrado'
+    get 'articles/index'
 
-  get 'articles/index'
+    get 'articles/new'
 
-  get 'articles/new'
+    get 'articles/show'
 
-  get 'articles/show'
+    get 'articles/edit'
 
-  get 'articles/edit'
+    get 'article/index'
 
-  get 'article/index'
+    get 'article/new'
 
-  get 'article/new'
+    get 'article/show'
 
-  get 'article/show'
+    get 'article/edit'
 
-  get 'article/edit'
+    resources :petitions
 
-  get 'users/index'
+    get 'petitions/encontre/:article_id', to: 'petitions#encontre', as: 'encontre'
 
-  get 'users/show'
-
-  get 'users/new'
-
-  get 'users/edit'
-
-  resources :articles
-
-  resources :petitions
-
-  get 'inicio/bienvenido'
     root 'inicio#bienvenido'
-      resources :users
 
-  post 'login/iniciar_sesion'
-  post 'login/cerrar_sesion'
+    resources :users
+
+    post 'login/iniciar_sesion'
+    post 'login/cerrar_sesion'
+
+    get 'login/cerrar_sesion'
+
+    get 'login/iniciar_sesion'
+
+    get 'inicio/bienvenido'
+
+      match 'articles_find', to: 'articles#find', via: [:get, :post]
+
+  end
 
 
-  get 'login/cerrar_sesion'
-
-  get 'login/iniciar_sesion'
-
-  get 'inicio/bienvenido'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
