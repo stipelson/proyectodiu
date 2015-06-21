@@ -71,21 +71,30 @@
 		 ¿Encontraste este objeto?
 		</legend>
 
+		<%if @peticiones.empty?%>
 
 		<p>Si encontraste este objeto, puedes hacerle saber al dueño que lo hayaste.</p>
 
-		<%= link_to "Lo encontre", new_article_petition_path(@article), class: "btn btn-green" %>
+		<%= link_to 'Lo encontre', "#", id: "encontre#{@article.id}", :'class' => 'btn btn-green',  data: {id: "encontre#{@article.id}", title: "¿Encontraste este objeto?", toggle: "modal", content: "#ajax-encontre", tools: "modal", width: "700"}%>
 
+		<% else %>
+		Ya le enviaste tus datos a el usuario que lo subio.
+		<%end%>
 		<% else %>
 
 		<legend>
 		 ¿El objeto es tuyo?
 		</legend>
 
+		<%if @peticiones.empty?%>
+
 		<p>Si crees que este objeto es tuyo, puedes hacerle saber al dueño que es tuyo.</p>
 
 		<%= link_to "Es mio", new_article_petition_path(@article), class: "btn btn-green" %>
 
+		<%else%>
+		Ya solicitaste este objeto al usuario que lo subio.
+		<%end%>
 
 		<% end %>
 		<% end %>
@@ -112,3 +121,36 @@
 
 
 </div>
+
+<div id="ajax-encontre" class="modal hide fade" tabindex="-1">
+	<div class='modal-header'>
+
+	</div>
+	<div class='modal-body'>
+		<div class="modal-body-content">Al aceptar enviaras el correo electronico para que el dueño se contacte con tigo.</div>
+		<div class="ajax-loader"></div>
+	</div>
+	<div class='modal-footer'>
+	</div>
+</div>
+
+
+<script>
+	$(function()
+	{
+		$("#encontre<%= @article.id%>").on('loading.tools.modal', function(modal)
+		{
+			this.createCancelButton('Cancelar');
+
+			var buttonAction = this.createActionButton('Aceptar');
+
+			buttonAction.on('click', $.proxy(function()
+			{
+				window.location.replace("/petitions/encontre/<%= @article.id%>");
+
+				this.modal.close();
+
+			}, this));
+		});
+	});
+</script>

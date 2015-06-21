@@ -38,6 +38,8 @@
                 <%= link_to "Objetos que busco", objetos_path(2), :'data-theme'=> 'blue', :'data-tools' => 'tooltip', :'title' => 'Los que buscas' %></li>
                 <li>
                   <%= link_to "Solicitudes", objetos_path(3), :'data-theme'=> 'blue', :'data-tools' => 'tooltip', :'title' => 'Que alguien mas subio y crees que es tuyo' %></li>
+                  <li>
+                  <%= link_to "Notificaciones", objetos_path(4), :'data-theme'=> 'blue', :'data-tools' => 'tooltip', :'title' => 'Notificaciones de objetos que busco' %></li>
                 </ul>
                 <nav class="navbar navbar-pills navbar-right ">
                   <ul>
@@ -90,14 +92,22 @@
                           </li>
                           <li>
                             <div class="unit-push-right unit-70">
-                              <form method="post" action="" class="forms">
-                                <label class="input-groups">
-                                  <input type="text" name="buscar" placeholder=<%=  I18n.t('layouts.application.search')  %>>
-                                  <span class="btn-append">
+
+
+
+                                  <%= form_for :articles, :url => articles_find_path, :html => { :class=> 'forms'  } do %>
+                                  <label class="input-groups">
+                                    <%= text_field_tag :busqueda%>
+                                     <span class="btn-append">
                                     <button class="btn btn-blue"><%= I18n.t('layouts.application.search')  %></button>
-                                  </span>
-                                </label>
-                              </form>
+
+                                    </span>
+                                    </label>
+                                  <%end%>
+
+
+
+
                             </div>
                           </li>
                         </ul>

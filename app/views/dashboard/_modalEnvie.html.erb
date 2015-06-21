@@ -1,101 +1,103 @@
   <h2>Solicitudes que he realizado de objetos</h2>
   <hr>
 
+
+
   <% @petitionesQueHice.each do |petition| %>
   <% if petition.article.busca == false %>
   <div data-tools="accordion">
-    <a href= '<%= "#panes#{petition.article.id}"%>' class="accordion-title btn-n"><%= petition.article.nombre.capitalize %>
+  	<a href= '<%= "#panelSolicitudesRealice#{petition.id}"%>' class="accordion-title btn-n"><%= petition.article.nombre.capitalize %>
 
-    <% if petition.aprobado == nil%>
-        <span class="label label-yellow">En espera</span>
-     <%elsif petition.solicitado_a == true and petition.aprobado == true%>
-        <span class="label label-green">Aprobado</span>
-     <%elsif petition.solicitado_a == false and petition.aprobado == true%>
-        <span class="label label-red">Desaprobado</span>
-    <% end %>
+  		<% if petition.aprobado == nil%>
+  		<span class="label label-yellow">En espera</span>
+  		<%elsif petition.solicitado_a == true and petition.aprobado == true%>
+  		<span class="label label-green">Aprobado</span>
+  		<%elsif petition.solicitado_a == false and petition.aprobado == true%>
+  		<span class="label label-red">Desaprobado</span>
+  		<% end %>
 
-    </a>
-    <div id= '<%= "panes#{petition.article.id}"%>' class="accordion-panel btn-n">
-      <div class="units-row">
-        <div class="unit-30">
-          <dl>
-            <dt>Nombre</dt>
-            <dd><%= petition.article.nombre.capitalize%></dd>
-            <dt>Lo subio</dt>
-            <dd> <%= petition.article.user.nombre.capitalize %></dd>
-            <dt>Categoria</dt>
-            <dd><%= petition.article.category.nombre%></dd>
-          </dl>
-        </div>
-        <div class="unit-30">
-          <%= image_tag petition.article.photo.url(:small) %>
-        </div>
-        <div class="unit-30">
-          <dl>
-            <dt>Descripcion</dt>
-            <dd><%= petition.article.descripcion %></dd>
-            <dt>Estado</dt>
-            <dd>
+  	</a>
+  	<div id= '<%= "panelSolicitudesRealice#{petition.id}"%>' class="accordion-panel btn-n">
+  		<div class="units-row">
+  			<div class="unit-30">
+  				<dl>
+  					<dt>Nombre</dt>
+  					<dd><%= petition.article.nombre.capitalize%></dd>
+  					<dt>Lo subio</dt>
+  					<dd> <%= petition.article.user.nombre.capitalize %></dd>
+  					<dt>Categoria</dt>
+  					<dd><%= petition.article.category.nombre%></dd>
+  				</dl>
+  			</div>
+  			<div class="unit-30">
+  				<%= image_tag petition.article.photo.url(:small) %>
+  			</div>
+  			<div class="unit-30">
+  				<dl>
+  					<dt>Descripcion</dt>
+  					<dd><%= petition.article.descripcion %></dd>
+  					<dt>Estado</dt>
+  					<dd>
 
-            <% if petition.solicitado_a == nil%>
-            Aun no hay una respuesta por parte del usuario que lo subio.
-              <span class="label label-outline label-yellow">En espera</span>
-            <%elsif petition.solicitado_a == false%>
-            <span class="label label-outline label-red">No aprobado</span><br>
-            La persona que lo encontro no cree que el objeto sea tuyo.<br>
+  						<% if petition.solicitado_a == nil%>
+  						Aun no hay una respuesta por parte del usuario que lo subio.
+  						<span class="label label-outline label-yellow">En espera</span>
+  						<%elsif petition.solicitado_a == false%>
+  						<span class="label label-outline label-red">No aprobado</span><br>
+  						La persona que lo encontro no cree que el objeto sea tuyo.<br>
 
-            <%= link_to 'Dejar de recibir notificacion', aprobadoEnvio_path(petition.id), :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Si ya tiene una cuenta', :'class' => 'btn btn-smaller btn-red'%>
-            <%elsif petition.solicitado_a == true%>
-            <span class="label label-outline label-green">Aprobado</span><br>
-            Comunicate con el usuario que lo tiene mediente su correo:<br>
-            <%= link_to 'Obtener datos', "#", id: "aprobado#{petition.id}", :'class' => 'btn btn-smaller btn-green',  data: {id: "aprobado#{petition.id}", title: "Datos del usuario que lo tiene", toggle: "modal", content: "#ajax-encontrado", tools: "modal", width: "700"}%>
+  						<%= link_to 'Dejar de recibir notificacion', aprobadoEnvio_path(petition.id), :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Si ya tiene una cuenta', :'class' => 'btn btn-smaller btn-red'%>
+  						<%elsif petition.solicitado_a == true%>
+  						<span class="label label-outline label-green">Aprobado</span><br>
+  						Comunicate con el usuario que lo tiene mediente su correo:<br>
 
-            <div id="ajax-encontrado" class="modal hide fade" tabindex="-1">
-            <div class='modal-header'>
-            </div>
-            <div class='modal-body'>
-              <div class="modal-body-content">
-                <li>Correo del usuario que lo subio</li>
-                <ul>
-                  <li><%=petition.article.user.correo %></li>
-                </ul>
-              </ul>
+  						<%end%>
 
+  					</dd>
+  				</dl>
+  				<%= link_to 'Obtener datos', "#", id: "aprobado#{petition.id}", :'class' => 'btn btn-smaller btn-green',  data: {id: "aprobado#{petition.id}", title: "Datos del usuario que lo tiene", toggle: "modal", content: "#ajax-encontrado", tools: "modal", width: "700"}%>
 
-              </div>
-              <div class="ajax-loader"></div>
-            </div>
-            <div class='modal-footer'>
-            </div>
-          </div>
+  				<div id="ajax-encontrado" class="modal hide fade" tabindex="-1">
 
-          <script>
-            $(function()
-            {
-              $("#aprobado<%= petition.id%>").on('loading.tools.modal', function(modal)
-              {
+  					<div class='modal-body'>
+  						<div class="modal-body-content">
+  							<li>Correo del usuario que lo subio</li>
+  							<ul>
+  								<li><%=petition.article.user.correo %></li>
+  							</ul>
+  						</ul>
+  					</div>
+  				</div>
 
-                var buttonAction = this.createActionButton('Aceptar');
+  			</div>
 
-                buttonAction.on('click', $.proxy(function()
-                {
-                  window.location.replace("/dashboard/aprobenviado/<%= petition.id%>");
-
-                  this.modal.close();
-
-                }, this));
-              });
-            });
-          </script>
-
-            <%end%>
-
-            </dd>
-          </dl>
-        </div>
-      </div>
-    </div>
-    <%end%>
+  			<script>
+  				$(function()
+  				{
+  					$("#aprobado<%= petition.id%>").on('loading.tools.modal', function(modal)
+  					{
+  						var buttonAction = this.createActionButton('Aceptar');
+  						buttonAction.on('click', $.proxy(function()
+  						{
+  							window.location.replace("/dashboard/aprobenviado/<%= petition.id%>");
+  							this.modal.close();
+  						}, this));
+  					});
+  				});
+  			</script>
+  		</div>
+  	</div>
   </div>
-  <% end %>
-  <br>
+</div>
+<%end%>
+
+<% end %>
+
+<br>
+
+
+
+
+
+
+

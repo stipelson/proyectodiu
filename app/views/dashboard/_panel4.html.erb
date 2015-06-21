@@ -1,0 +1,100 @@
+  <h2>Notificaciones de objetos que busco</h2>
+  <hr>
+
+  <% @petitionesQueMeHacen.each do |petition| %>
+  <% if petition.article.busca == true %>
+  <div data-tools="accordion">
+    <a href= '<%= "#panelNoti#{petition.id}"%>' class="accordion-title btn-n"><%= petition.article.nombre.capitalize %>
+
+      <% if petition.aprobado == nil%>
+      <span class="label label-blue">
+        Encontrado
+      </span>
+      <% end %>
+
+    </a>
+    <div id= '<%= "panelNoti#{petition.id}"%>' class="accordion-panel btn-n">
+      <div class="units-row">
+        <div class="unit-30">
+          <dl>
+            <dt>
+              Nombre
+            </dt>
+            <dd>
+              <%= petition.article.nombre.capitalize%>
+            </dd>
+            <dt>
+              Lo encontro
+            </dt>
+            <dd>
+              <%= petition.user.usuario.capitalize %>
+            </dd>
+          </dl>
+        </div>
+        <div class="unit-30">
+          <%= image_tag petition.article.photo.url(:small) %>
+        </div>
+        <div class="unit-30">
+          <dl>
+            <dt>
+              Descripcion
+            </dt>
+            <dd><%= petition.article.descripcion %></dd>
+            <dt>
+              Estado
+            </dt>
+            <dd>
+
+              <% if petition.encontrado_a == nil%>
+              <span class="label label-outline label-green">Encontrado</span><br>
+
+              Comunicate con el usuario que lo tiene mediente su correo:<br>
+              <%= link_to 'Obtener datos', "#", id: "notificacion#{petition.id}", :'class' => 'btn btn-smaller btn-green',  data: {id: "notificacion#{petition.id}", title: "Datos del usuario que lo tiene", toggle: "modal", content: "#ajax-notificacion", tools: "modal", width: "700"}%>
+
+
+
+              <div id="ajax-notificacion" class="modal hide fade" tabindex="-1">
+                <div class="modal-body-content">
+                  <li>
+                    Correo del usuario que lo encontro
+                  </li>
+                  <ul>
+                    <li>
+                      <%=petition.user.correo %>
+                    </li>
+                  </ul>
+                </ul>
+              </div>
+            </div>
+
+            <script>
+              $(function()
+              {
+                $("#notificacion<%= petition.id%>").on('loading.tools.modal', function(modal)
+                {
+
+                  var buttonAction = this.createActionButton('Aceptar');
+
+                  buttonAction.on('click', $.proxy(function()
+                  {
+                    window.location.replace("/dashboard/aprobencontrado/<%= petition.id%>");
+
+                    this.modal.close();
+
+                  }, this));
+                });
+              });
+            </script>
+          </dd>
+        </dl>
+
+
+        <%end%>
+
+      </div>
+    </div>
+  </div>
+</div>
+<%end%>
+<% end %>
+<br>
