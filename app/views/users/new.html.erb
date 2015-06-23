@@ -1,5 +1,5 @@
 <p>
-	<h2> Registrate gratis, encuentra y ayuda. </h2>
+	<h2> <%=I18n.t('users.new.title')%> </h2>
 </p>
 
 
@@ -7,8 +7,8 @@
 
 	<li>
 
-			<div class="unit-centered unit-70">
-				<%= render :partial => "formulario_guardar_usuarios.html" %>
+		<div class="unit-centered unit-70">
+			<%= render :partial => "formulario_guardar_usuarios.html" %>
 
 		</div>
 
@@ -16,21 +16,21 @@
 	<li>
 		<fieldset>
 			<legend>
-			Sube un objeto
+				<%=I18n.t('users.new.logTitle')%>
 			</legend>
-			<p>Si encuentras un objeto y buscas su dueño esta puede ser la forma de hacerle saber al dueño que aun puede recuperarlo.
+			<p><%=I18n.t('users.new.logText')%>
 			</p>
-			<%= link_to "Ingresar",  login_iniciar_sesion_path, :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Ya estas registrado, empieza a subir' , :'class' => 'btn btn-blue'%>
+			<%= link_to I18n.t('layouts.application.signIn'),  login_iniciar_sesion_path, :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => I18n.t('layouts.application.signInT') , :'class' => 'btn btn-blue'%>
 		</fieldset>
 		<fieldset>
 			<legend>
-				Encuentra tus objetos
+				<%=I18n.t('users.new.findTitle')%>
 			</legend>
 			<p>
-				Si encuentras un objeto que te pertenece, envia las razones por las cuales crees que es tuyo y por ultimo ponte en contacto con la persona que lo recupero.
+				<%=I18n.t('users.new.findText')%>
 			</p>
 
-			<%= link_to "Inicio", root_path, :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Ir a inicio' , :'class' => 'btn btn-black'%>
+			<%= link_to I18n.t('users.new.findBotton'), root_path, :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => I18n.t('users.new.findBottonT') , :'class' => 'btn btn-black'%>
 
 		</fieldset>
 

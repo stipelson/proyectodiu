@@ -8,43 +8,45 @@
 
 
 <%= e.label :nombre do %>
-Nombre<span class='req'>*</span>
-<%= e.text_field(:nombre, class: 'width-100', :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Tu nombre') %>
+<%= I18n.t('users.formulario.name')%><span class='req'>*</span>
+<%= e.text_field(:nombre, class: 'width-100', :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => I18n.t('users.formulario.nameT')) %>
 <% end %>
 
-<%= e.label :apellido do %> Apellido
+<%= e.label :apellido do %>
+<%= I18n.t('users.formulario.surname')%>
 <%= e.text_field(:apellido, class: 'width-100') %>
 <% end %>
 
 <%= e.label :usuario do %>
-Usuario<span class='req'>*</span>
-<%= e.text_field(:usuario, class: 'width-100', :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'El que usaras para iniciar sesion') %>
-<div class="forms-desc">El nombre de usuario sera publico.</div>
+<%= I18n.t('users.formulario.user')%><span class='req'>*</span>
+<%= e.text_field(:usuario, class: 'width-100', :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => I18n.t('users.formulario.userT')) %>
+<div class="forms-desc"><%= I18n.t('users.formulario.userText')%></div>
 <% end %>
 
 <%= e.label :password do %>
-Contraseña<span class="req">*</span>
+<%= I18n.t('users.formulario.pass')%><span class="req">*</span>
 
-<%= e.text_field(:password, class: 'width-100', :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'La usaras para iniciar sesion') %>
+<%= e.text_field(:password, class: 'width-100', :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => I18n.t('users.formulario.passT')) %>
 <% end %>
 
 
 <%= e.label :correo do %>
-Correo<span class="req">*</span>
+<%= I18n.t('users.formulario.email')%><span class="req">*</span>
 
-<%= e.text_field(:correo, class: 'width-100', :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Correo electronico') %>
+<%= e.text_field(:correo, class: 'width-100', :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => I18n.t('users.formulario.emailT')) %>
 <% end %>
 
 <% if defined?(@permiso_admin) and @permiso_admin %>
 
 <%= e.label :admin do %>
+<%= I18n.t('users.formulario.admin')%>
 <%= e.check_box (:admin) %>
 <% end %>
 
 <% end %>
 
 <p>
-	<%= e.submit "Enviar", class: "btn btn-green" %> <%= link_to "Cancelar", users_path, class: "btn btn-red" %>
+	<%= e.submit I18n.t('users.formulario.send'), class: "btn btn-green" %> <%= link_to I18n.t('users.formulario.cancel'), users_path, class: "btn btn-red" %>
 </p>
 
 <% end %>

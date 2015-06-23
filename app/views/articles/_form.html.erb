@@ -15,19 +15,19 @@
 
 			<fieldset>
 				<legend>
-					¿Que clase de objeto es?
+					<%= I18n.t('articles.form.typeTittle')%>
 				</legend>
-				<p>Si es un objeto que perdiste y lo estas buscando o si por el contrario es un objeto que encontraste y buscas su dueño; marca la casilla correspondiente.
+				<p><%= I18n.t('articles.form.typeText')%>
 				</p>
 
 				<%= e.label :busca do%>
 				<%= e.radio_button :busca, '1', :checked => true %>
-				¿Esta buscando este objeto?
+				<%= I18n.t('articles.form.typeSelect1')%>
 				<% end %>
 				<br>
 				<%= e.label :busca do%>
 				<%= e.radio_button :busca, '0' %>
-				¿Buscas su dueño?
+				<%= I18n.t('articles.form.typeSelect2')%>
 				<% end %>
 
 
@@ -35,38 +35,39 @@
 
 			<fieldset>
 				<legend>
-					Añade los datos del objeto
+					<%= I18n.t('articles.form.dataTitle')%>
 				</legend>
 				<div class="forms">
 					<%= e.label :nombre do%>
-					Nombre<span class='req'>*</span>
-					<%= e.text_field(:nombre, class: 'width-100', :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Tu nombre') %>
+					<%= I18n.t('articles.form.name')%><span class='req'>*</span>
+					<%= e.text_field(:nombre, class: 'width-100', :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => I18n.t('articles.form.nameT')) %>
 					<% end %>
 
-					<%= e.label :color do %> Color
+					<%= e.label :color do %>
+					<%= I18n.t('articles.form.color')%>
 					<%= e.text_field(:color, class: 'width-100') %>
 					<% end %>
 
 					<%= e.label :marca do %>
-					Marca<span class='req'>*</span>
-					<%= e.text_field(:marca, class: 'width-100', :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'El que usaras para iniciar sesion') %>
+					<%= I18n.t('articles.form.brand')%><span class='req'>*</span>
+					<%= e.text_field(:marca, class: 'width-100', :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => I18n.t('articles.form.brandT')) %>
 					<% end %>
 
 					<%= e.label :lugar do %>
-					lugar<span class="req">*</span>
+					<%= I18n.t('articles.form.place')%><span class="req">*</span>
 
-					<%= e.text_field(:lugar, class: 'width-100', :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'La usaras para iniciar sesion') %>
+					<%= e.text_field(:lugar, class: 'width-100', :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => I18n.t('articles.form.placeT')) %>
 					<% end %>
 
 
 					<%= e.label :descripcion do %>
-					Descripcion<span class="req">*</span>
+					<%= I18n.t('articles.form.description')%><span class="req">*</span>
 
-					<%= e.text_area(:descripcion, class: 'width-100', :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Correo electronico', :'rows' => '4') %>
+					<%= e.text_area(:descripcion, class: 'width-100', :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => I18n.t('articles.form.descriptionT'), :'rows' => '4') %>
 					<% end %>
 
 					<%= e.label :categoria do %>
-					Categoria<span ></span>
+					<%= I18n.t('articles.form.category')%><span ></span>
 
 					<%= e.collection_select(:category_id, @categories, :id, :nombre, {}, {class: "width-100"}) %>
 					<% end %>
@@ -84,19 +85,19 @@
 
 			<fieldset>
 				<legend>
-					Añade una foto
+					<%= I18n.t('articles.form.picTitle')%>
 				</legend>
-				<p>Toma una foto del articulo, de no tenerla tendras que describirlo muy bien.
+				<p><%= I18n.t('articles.form.picText')%>
 				</p>
 				<%= e.file_field(:photo,  :'data-tools' => 'upload') %>
 			</fieldset>
 
 			<fieldset>
 				<legend>
-					Envia el objeto.
+					<%= I18n.t('articles.form.sendTitle')%>
 				</legend>
 				<p>
-					<%= e.submit "Enviar", class: "btn btn-green" %> <%= link_to "Cancelar", articles_path, class: "btn btn-red" %>
+					<%= e.submit I18n.t('articles.form.buttonSend'), class: "btn btn-green" %> <%= link_to I18n.t('articles.form.buttonCancel'), articles_path, class: "btn btn-red" %>
 				</p>
 			</fieldset>
 

@@ -1,2 +1,2 @@
-<h2> La sesión ha sido cerrada. Hasta la próxima. <%= "#{@empleado}" %></h2>
-<p> <%= link_to "Volver a ingresar", :controller => "login", :action => "iniciar_sesion" %> </p>
+<h2> <%= I18n.t('login.cerrar_sesion.farewell')%> <%= "#{@empleado}" %></h2>
+<p> <%= link_to I18n.t('login.cerrar_sesion.reEntry'), :controller => "login", :action => "iniciar_sesion" %> </p>

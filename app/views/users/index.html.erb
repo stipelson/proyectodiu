@@ -3,13 +3,13 @@
 
 
 		<div class="page-header">
-			<h1>Usuarios <small>Lista de usuarios</small></h1>
+			<h1><%= I18n.t('users.index.title')%> <small><%= I18n.t('users.index.titleT')%></small></h1>
 		</div>
 
 
 	</div>
 	<div class="unit-push-right ">
-		<p> <%= link_to "Crear un nuevo usuario", new_user_path, class: "btn btn-blue" %> </p>
+		<p> <%= link_to I18n.t('users.index.buttonNew'), new_user_path, class: "btn btn-blue" %> </p>
 
 	</div>
 </div>
@@ -24,24 +24,24 @@
 	<div id= '<%= "#{user.nombre}"%>' class="accordion-panel btn-n">
 
 		<dl>
-			<dt>Nombre</dt>
+			<dt><%= I18n.t('users.formulario.name')%></dt>
 			<dd><%= user.nombre.capitalize%></dd>
 
-			<dt>Perfil</dt>
+			<dt><%= I18n.t('users.index.perfil')%></dt>
 
 			<% if user.admin %>
-			<dd>Es administrador</dd>
+			<dd><%= I18n.t('users.formulario.admin')%></dd>
 			<%else %>
-			<dd>Registrado</dd>
+			<dd><%= I18n.t('users.index.perfilNoAdmin')%></dd>
 			<%end%>
 
-			<dt>Correo electronico</dt>
+			<dt><%= I18n.t('users.formulario.emailT')%></dt>
 			<dd><%= user.correo%></dd>
 		</dl>
 
-		<%= link_to 'Ver',  user_path(user), :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Si ya tiene una cuenta', :'class' => 'btn btn-smaller btn-blue'%>
-		<%= link_to 'Editar', edit_user_path(user), :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Si ya tiene una cuenta', :'class' => 'btn btn-smaller btn-green'%>
-		<%= link_to 'Eliminar', user_path(user), method: :delete, data: { confirm: '¿Esta seguro de querer eliminar el usuario ' +user.nombre.capitalize+ '?' }, :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Si ya tiene una cuenta', :'class' => 'btn btn-smaller btn-red'%>
+		<%= link_to I18n.t('articles.index.show'),  user_path(user), :'class' => 'btn btn-smaller btn-blue'%>
+		<%= link_to I18n.t('articles.index.edit'), edit_user_path(user), :'class' => 'btn btn-smaller btn-green'%>
+		<%= link_to I18n.t('articles.index.delete'), user_path(user), method: :delete, data: { confirm: '¿Esta seguro de querer eliminar el usuario ' +user.nombre.capitalize+ '?' }, :'class' => 'btn btn-smaller btn-red'%>
 
 
 	</div>
@@ -49,5 +49,3 @@
 </div>
 
 <% end %>
-
-

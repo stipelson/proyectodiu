@@ -85,21 +85,24 @@ es:
    show: "Ver"
    edit: "Editar"
    delete: "Eliminar"
-   deleteMs: "¿Está seguro de querer eliminar el objeto?"
+   deleteMs: "¿Está seguro de querer eliminar el objeto "
   show:
    infoTitle: "Información"
    name: "Nombre"
    brand: "Marca"
    color: "Color"
    description: "Descripción"
-   place: "Lugar donde se perdió o fue encontrado"
+   placeWanted: "Lugar donde se perdió"
+   placeFound: "Lugar donde fue encontrado"
    actionsMyTitle: "Acciones sobre el objeto"
    actionsWantedTitle: "¿Encontraste este objeto?"
    actionsWantedText: "Si encontraste este objeto, puedes hacerle saber al dueño que lo hallaste."
-   actionesWantedButton: "Lo encontré"
+   actionsWantedNo: "Ya le enviaste tus datos a el usuario que lo subio."
+   actionsWantedButton: "Lo encontré"
    actionsFoundTitle: ¿El objeto es tuyo?
    actionsFoundText: "Si crees que este objeto es tuyo, puedes hacerle saber a la persona que lo halló que es tuyo."
    actionsFoundButton: "Es mío"
+   actionsFoundNo: "Ya solicitaste este objeto al usuario que lo subio."
   form:
    typeTittle: "¿Qué clase de objeto es?"
    typeText: "Si es un objeto que perdiste y lo estás buscando. Si por el contrario es un objeto que encontraste y buscas a su dueño, marca la casilla correspondiente."
@@ -121,3 +124,50 @@ es:
    sendTitle: "Envía el formulario"
    buttonSend: "Enviar"
    buttonCancel: "Cancelar"
+ users:
+  new:
+   title: "Registrate gratis, encuentra y ayuda"
+   logTitle: "Sube un objeto"
+   logText: "Si encuentras un objeto y buscas su dueño esta puede ser la forma de hacerle saber al dueño que aun puede recuperarlo."
+   findTitle: "Encuentra tus objetos"
+   findText: "Si encuentras un objeto que te pertenece, envia las razones por las cuales crees que es tuyo y por ultimo ponte en contacto con la persona que lo recupero."
+   findBotton: "Inicio"
+   findBottonT: "Ir a inicio"
+  formulario:
+   name: "Nombre"
+   nameT: "Tu nombre"
+   surname: "Apellido"
+   user: "Usuario"
+   userT: "El que usaras para iniciar sesion"
+   userText: "El nombre de usuario sera publico"
+   pass: "Contraseña"
+   passT: "La usaras para iniciar sesion"
+   email: "Correo"
+   emailT: "Correo electronico"
+   send: "Enviar"
+   cancel: "Cancelar"
+   admin: "Administrador"
+  edit:
+   title: "Modificar usuario"
+   titleT: "modificacion y/o actualizacion de datos"
+  show:
+   data: "Datos"
+   re: "Volver"
+  index:
+   title: "Usuarios"
+   titleT: "Lista de usuarios"
+   perfil: "Perfil"
+   perfilNoAdmin: "Por defecto"
+   buttonNew: "Crear un nuevo usuario"
+ petitions:
+  form:
+   razon: "Razón"
+   send: "Enviar"
+   cancel: "Cancelar"
+  new:
+   title: "Enviar la solicitud"
+
+
+
+
+

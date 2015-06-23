@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController
 
 	def index
 		if permiso_admin();
-			@articles = Article.all.order("created_at DESC")
+			@articlesAll = Article.all.order("created_at DESC")
 			notificaciones()
 		else
 			redirect_to objetos_path(1);

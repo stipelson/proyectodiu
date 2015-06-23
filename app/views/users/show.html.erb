@@ -1,16 +1,16 @@
 <div class="page-header">
-	<h2><%= @user.nombre %><small> datos</small></h2>
+	<h2><%= @user.nombre %><small> <%= I18n.t('users.show.data')%></small></h2>
 </div>
 
 <table class='table table-hover' >
 	<thead>
 		<tr>
-			<th>Nombre</th>
-			<th>Apellido</th>
-			<th>Usuario</th>
-			<th>Password</th>
-			<th>Correo</th>
-			<th>Administrador</th>
+			<th><%= I18n.t('users.formulario.name')%></th>
+			<th><%= I18n.t('users.formulario.surname')%></th>
+			<th><%= I18n.t('users.formulario.user')%></th>
+			<th><%= I18n.t('users.formulario.pass')%></th>
+			<th><%= I18n.t('users.formulario.email')%></th>
+			<th><%= I18n.t('users.formulario.admin')%></th>
 			<th colspan="6"></th>
 		</tr>
 	</thead>
@@ -33,4 +33,4 @@
 	</tbody>
 </table>
 
-<p> <%= link_to "Volver", users_path, class: "btn btn-primary" %> </p>
+<p> <%= link_to I18n.t('users.show.re'), users_path, class: "btn btn-blue" %> </p>

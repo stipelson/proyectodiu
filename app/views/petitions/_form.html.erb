@@ -3,17 +3,19 @@
 	<div class="unit-60">
 
 
-<%= form_for([@article, @petition]) do |f| %>
+		<%= form_for([@article, @petition]) do |f| %>
 
 
-    <%= f.label :razon %>
-    <%= f.text_area :razon %>
+		<%= f.label :razon do%>
+		<%= I18n.t('petitions.form.razon')%>
+		<%= f.text_area :razon %>
+		<%end%>
 
 
-</div>
-<div class= 'unit-40'>
-  <%= f.submit "Enviar", class: "btn btn-green" %> <%= link_to "Cancelar", article_path(@article), class: "btn btn-red" %>
-</div>
+	</div>
+	<div class= 'unit-40'><br>
+		<%= f.submit I18n.t('petitions.form.send'), class: "btn btn-green" %> <%= link_to I18n.t('petitions.form.cancel'), article_path(@article), class: "btn btn-red" %>
+	</div>
 </div>
 
 <% end %>

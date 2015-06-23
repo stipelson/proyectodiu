@@ -3,19 +3,19 @@
 
 
 			<div class="page-header">
-				<h1>Objetos <small>Lista de objetos</small></h1>
+				<h1><%= I18n.t('articles.index.title')%> <small><%= I18n.t('articles.index.titleT')%></small></h1>
 			</div>
 
 
 		</div>
 		<div class="unit-push-right ">
-			<p> <%= link_to "Subir un nuevo objeto", new_article_path, class: "btn btn-blue" %> </p>
+			<p> <%= link_to I18n.t('articles.index.buttonNew'), new_article_path, class: "btn btn-blue" %> </p>
 
 		</div>
 	</div>
 
 
-	<% @articles.each do |article| %>
+	<% @articlesAll.each do |article| %>
 
 
 
@@ -26,13 +26,13 @@
 			<div class="units-row">
 				<div class="unit-30">
 					<dl>
-						<dt>Nombre</dt>
+						<dt><%= I18n.t('articles.index.name')%></dt>
 						<dd><%= article.nombre.capitalize%></dd>
 
-						<dt>Lo subio</dt>
+						<dt><%= I18n.t('articles.index.upploaded')%></dt>
 						<dd> <%= article.user.nombre.capitalize %></dd>
 
-						<dt>Categoria</dt>
+						<dt><%= I18n.t('articles.index.category')%></dt>
 						<dd><%= article.category.nombre%></dd>
 					</dl>
 				</div>
@@ -42,15 +42,15 @@
 				</div>
 				<div class="unit-30">
 					<dl>
-						<dt>Descripcion</dt>
+						<dt><%= I18n.t('articles.index.description')%></dt>
 						<dd><%= article.descripcion %></dd>
 					</dl>
 				</div>
 			</div>
 
-			<%= link_to 'Ver',  article_path(article), :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Si ya tiene una cuenta', :'class' => 'btn btn-smaller btn-blue'%>
-			<%= link_to 'Editar', edit_article_path(article), :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Si ya tiene una cuenta', :'class' => 'btn btn-smaller btn-green'%>
-			<%= link_to 'Eliminar', article_path(article), method: :delete, data: { confirm: '¿Esta seguro de querer eliminar el objeto ' +article.nombre.capitalize+ '?' }, :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Si ya tiene una cuenta', :'class' => 'btn btn-smaller btn-red'%>
+			<%= link_to I18n.t('articles.index.show'),  article_path(article), :'class' => 'btn btn-smaller btn-blue'%>
+			<%= link_to I18n.t('articles.index.edit'), edit_article_path(article), :'class' => 'btn btn-smaller btn-green'%>
+			<%= link_to I18n.t('articles.index.delete'), article_path(article), method: :delete, data: { confirm:  I18n.t('articles.index.deleteMs') +article.nombre.capitalize+ '?' }, :'class' => 'btn btn-smaller btn-red'%>
 
 
 		</div>

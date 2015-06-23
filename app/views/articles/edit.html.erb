@@ -1,4 +1,4 @@
 <div class="page-header">
-  <h2>Modificar articulo <%= @article.nombre.capitalize%><small> modificacion y/o actualizacion de datos</small></h2>
+  <h2><%= I18n.t('articles.edit.title') %> <%= @article.nombre.capitalize%><small> <%= I18n.t('articles.edit.tittleT') %></small></h2>
 </div>
 <%= render :partial => "form.html" %>
