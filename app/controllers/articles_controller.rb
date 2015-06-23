@@ -11,9 +11,16 @@ class ArticlesController < ApplicationController
 	end
 
 	def show
-		notificaciones()
-		@user = User.find(@current_user_id)
-		@peticiones = Petition.where(user: @user, article: @article)
+
+		if logueado()
+			notificaciones()
+			@user = User.find(@current_user_id)
+			@peticiones = Petition.where(user: @user, article: @article)
+		else
+			@peticiones = {}
+		end
+
+
 
 	end
 
@@ -68,7 +75,9 @@ class ArticlesController < ApplicationController
 	end
 
 	def find
+		if logueado()
 		notificaciones()
+		end
 		@categories = Category.all
 		@loguin = logueado();
 		@count= 0
