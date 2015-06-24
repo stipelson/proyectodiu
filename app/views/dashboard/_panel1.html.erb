@@ -1,4 +1,4 @@
-  <h2>Objetos que encontre</h2>
+  <h2><%= I18n.t('layouts.application.iUploadedObjects') %></h2>
   <hr>
 
 	<% @articles.each do |article| %>
@@ -12,13 +12,13 @@
 			<div class="units-row">
 				<div class="unit-30">
 					<dl>
-						<dt>Nombre</dt>
+						<dt><%= I18n.t('articles.index.name')%></dt>
 						<dd><%= article.nombre.capitalize%></dd>
 
-						<dt>Lo subio</dt>
+						<dt><%= I18n.t('articles.index.upploaded')%></dt>
 						<dd> <%= article.user.nombre.capitalize %></dd>
 
-						<dt>Categoria</dt>
+						<dt><%= I18n.t('articles.index.category')%></dt>
 						<dd><%= article.category.nombre%></dd>
 					</dl>
 				</div>
@@ -28,7 +28,7 @@
 				</div>
 				<div class="unit-30">
 					<dl>
-						<dt>Descripcion</dt>
+						<dt><%= I18n.t('articles.index.description')%></dt>
 						<dd><%= article.descripcion %></dd>
 						<dt>tipo</dt>
 						<dd>

@@ -1,14 +1,14 @@
 <div class="units-row">
   <div class="unit-20" >
-    <pre><h3>Objetos</h3></pre>
+    <pre><h3><%= I18n.t('layouts.application.objects') %></h3></pre>
     <nav class="nav nav-stacked " >
       <ul>
-        <li ><%= link_to "Subir un objeto", new_article_path, :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => 'Subir un objeto que hayas encontrado', :'class' =>'btn-n'%></li>
+        <li ><%= link_to I18n.t('inicio.bienvenido.uploadObject'), new_article_path, :'data-theme' => 'blue', :'data-tools' => 'tooltip', :'title' => I18n.t('inicio.bienvenido.uploadObjectT'), :'class' =>'btn-n'%></li>
       </ul>
     </nav>
     <div data-tools="navigation-fixed">
       <div data-tools="accordion">
-        <a href="#panelCategorias" class="accordion-title btn-n">Categorias</a>
+        <a href="#panelCategorias" class="accordion-title btn-n"><%=I18n.t('inicio.bienvenido.categories')%></a>
 
         <div id="panelCategorias" class="accordion-panel btn-n">
           <nav class="nav nav-stats" style ="margin-bottom: 0px;">
@@ -22,19 +22,19 @@
               <% end %>
             </nav>
           </div>
-          <a href="#panelTipo" class="accordion-title btn-n">Tipo</a>
+          <a href="#panelTipo" class="accordion-title btn-n"><%=I18n.t('inicio.bienvenido.type')%></a>
           <div id="panelTipo" class="accordion-panel btn-n">
             <nav class="nav nav-stats" style ="margin-bottom: 0px;">
               <ul>
                 <li><%= link_to stipo_path(1) do %>
-                  Se buscan
+                  <%= I18n.t('inicio.bienvenido.wanted')%>
                   <% end %>
                   <sup><%= @articles.where("busca = 't'").count %></sup>
                 </li>
               </ul>
               <ul>
                 <li><%= link_to stipo_path(2) do %>
-                  Encontrados
+                  <%=I18n.t('inicio.bienvenido.found')%>
                   <% end %>
                   <sup><%= @articles.where("busca = 'f'").count %></sup>
                 </li>
@@ -48,9 +48,9 @@
 
       <h2>
       <% if @busca == 't' %>
-        Objetos que estan siendo buscados
+        <%= I18n.t('inicio.bienvenido.wantedTitle')%>
       <% elsif @busca == 'f' %>
-        Objetos que fueron encontrados
+        <%= I18n.t('inicio.bienvenido.foundTitle')%>
       <% end %>
       </h2>
 
